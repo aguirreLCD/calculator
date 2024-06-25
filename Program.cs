@@ -1,4 +1,5 @@
 ﻿
+using System.Text.RegularExpressions;
 
 string? firstNumberInput = "";
 string? secondNumberInput = "";
@@ -16,15 +17,13 @@ int correctAnswerForSquare = 0;
 bool validEntry = false;
 
 string? readInputResult;
-string? readResult;
+string? readResult = "";
 string menuSelection = "";
 string mathGame = "";
 
 int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
-int[] score = new int[] { 0, 0, 0, 0, 0 };
 string[] mathOperations = new string[] { "Addition", "Subtraction", "Multiplication", "Division", "Square2d" };
 string[] mathGames = new string[33];
-string[] lapTimes = new string[33];
 
 int counter = 0;
 int rounds = 0;
@@ -46,27 +45,48 @@ while (menuSelection != "exit")
     Console.WriteLine("Your main menu options are:");
     Console.WriteLine("------------------------\n");
     // Console.WriteLine(" 0. To change the number of math Games you want to play");
-    Console.WriteLine(" 1. To calculate the Addition of two integers");
-    Console.WriteLine(" 2. To calculate the Subtraction of two integers");
-    Console.WriteLine(" 3. To calculate the Multiplication of two integers");
-    Console.WriteLine(" 4. To calculate the Division of two decimals (2 digits rounded)");
-    Console.WriteLine(" 5. To calculate the Division of two integers");
-    Console.WriteLine(" 6. To calculate the Square Root of one integer");
-    Console.WriteLine(" 7. To check if one integer is Even or Odd");
+    Console.WriteLine("1. To calculate the Addition of two integers, type: 1");
+    Console.WriteLine("2. To calculate the Subtraction of two integers, type: 2");
+    Console.WriteLine("3. To calculate the Multiplication of two integers, type: 3");
+    Console.WriteLine("4. To calculate the Division of two decimals (2 digits rounded), type: 4");
+    Console.WriteLine("5. To calculate the Division of two integers, type: 5");
+    Console.WriteLine("6. To calculate the Square Root of one integer, type: 6");
+    Console.WriteLine("7. To check if one integer is Even or Odd, type: 7");
 
-    Console.WriteLine(" 8. To display the operations");
-    Console.WriteLine(" 9. To display the previous Math Calculations");
+    Console.WriteLine("8. To display the total Math Calculations by operation, type: 8");
+    Console.WriteLine("9. To display the previous Math Calculations, type: 9");
 
     Console.WriteLine();
     Console.WriteLine("Enter your option (or type Exit to exit the program)");
 
     readResult = Console.ReadLine();
 
+    // Console.WriteLine(Regex.IsMatch(menuSelection, "/[0|1|2|3|4|5|6|7|8|9]ˆ/d$"));
+
     if (readResult != null)
     {
-        menuSelection = readResult.ToLower();
 
         // TODO: validate range of options
+
+        menuSelection = readResult.ToLower();
+        // Console.WriteLine(Regex.IsMatch(menuSelection, "/[0-9]/{1}"));
+        // Console.WriteLine(Regex.IsMatch(menuSelection, "ˆ[0-9]/d$"));
+        // Console.WriteLine(Regex.IsMatch(menuSelection, "/[0-9]/d"));
+        // Console.WriteLine(!Regex.IsMatch(menuSelection, "/[0|1|2|3|4|5|6|7|8|9]ˆ/d$"));
+        // Console.WriteLine(Regex.IsMatch(menuSelection, "/[0|1|2|3|4|5|6|7|8|9]ˆ/d$"));
+        // Regex.IsMatch(menuSelection, "ˆ[0-9]/d"))
+        // if (!Regex.IsMatch(menuSelection, "/[0|1|2|3|4|5|6|7|8|9]ˆ/d$"))
+        // {
+        // Console.WriteLine("This is not a valid option. Please enter a number from MENU and then press Enter:");
+        // menuSelection = Console.ReadLine();
+        // Console.WriteLine(menuSelection);
+        // Console.WriteLine("menuSelection");
+        // Console.WriteLine(Regex.IsMatch(menuSelection, "[0-9]d"));
+
+        // Console.WriteLine(menuSelection);
+        // Console.WriteLine("menuSelection");
+        // Console.WriteLine(Regex.IsMatch(menuSelection, "[0-9]/d"));
+
         if (menuSelection == "7")
         {
             Console.WriteLine("Even or Odd");
@@ -82,6 +102,7 @@ while (menuSelection != "exit")
                 firstNumberInput = Console.ReadLine();
             }
         }
+
         else if (menuSelection == "6")
         {
             Console.WriteLine("Square Root");
@@ -97,6 +118,7 @@ while (menuSelection != "exit")
                 firstNumberInput = Console.ReadLine();
             }
         }
+
         else if ((menuSelection != "9") && (menuSelection != "8"))
         {
             // Ask the user to type the first number.
@@ -404,13 +426,13 @@ void MakeSquare(int firstNumber)
 void evenOrOdd(int firstNumber)
 {
 
-    if (total % 2 == 0)
+    if (firstNumber % 2 == 0)
     {
-        Console.WriteLine($"{total} is an even number");
+        Console.WriteLine($"{firstNumber} is an even number");
     }
     else
     {
-        Console.WriteLine($"{total} is an odd number");
+        Console.WriteLine($"{firstNumber} is an odd number");
     }
 }
 
