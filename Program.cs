@@ -59,17 +59,42 @@ while (menuSelection != "exit")
     Console.WriteLine();
     Console.WriteLine("Enter your option (or type Exit to exit the program)");
 
+    Regex menuOptions = new Regex(@"[A-Z0-9]\d$");
+    // Console.WriteLine($"{menuOptions}");
     readResult = Console.ReadLine();
 
     // Console.WriteLine(Regex.IsMatch(menuSelection, "/[0|1|2|3|4|5|6|7|8|9]ˆ/d$"));
 
+
+    // if ((readResult == null) || (Regex.IsMatch(menuSelection, @"[A-Z0-9]\d")))
+    // {
+    //     Console.WriteLine("This is not a valid option. Please enter a number from MENU and then press Enter:");
+    //     readResult = Console.ReadLine();
+
+    // }
+
+    // else
     if (readResult != null)
     {
 
+        while (!int.TryParse(readResult, out firstNumber))
+        {
+            Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+            // firstNumberInput = Console.ReadLine();
+            readResult = Console.ReadLine();
+
+        }
+
         // TODO: validate range of options
+        // (Regex.IsMatch(menuSelection, @"[A-Z0-9]\d")))
+
 
         menuSelection = readResult.ToLower();
-        // Console.WriteLine(Regex.IsMatch(menuSelection, "/[0-9]/{1}"));
+
+        // Console.WriteLine(menuOptions.IsMatch(menuSelection));
+        // Console.WriteLine(!menuOptions.IsMatch(menuSelection));
+        // Console.WriteLine(Regex.IsMatch(menuSelection, @"[A-Z0-9]\d"));
+        // Console.WriteLine(Regex.IsMatch(menuSelection, @"/[ˆA-Z0-9]\d$"));
         // Console.WriteLine(Regex.IsMatch(menuSelection, "ˆ[0-9]/d$"));
         // Console.WriteLine(Regex.IsMatch(menuSelection, "/[0-9]/d"));
         // Console.WriteLine(!Regex.IsMatch(menuSelection, "/[0|1|2|3|4|5|6|7|8|9]ˆ/d$"));
@@ -87,63 +112,86 @@ while (menuSelection != "exit")
         // Console.WriteLine("menuSelection");
         // Console.WriteLine(Regex.IsMatch(menuSelection, "[0-9]/d"));
 
-        if (menuSelection == "7")
+        // Console.WriteLine(Regex.IsMatch(menuSelection, @"[A-Z0-9]\d"));
+        // if (Regex.IsMatch(menuSelection, @"[A-Z0-9]\d"))
+        // {
+        //     Console.WriteLine("This is not a valid option. Please enter a number from MENU and then press Enter:");
+
+        // }
+
+        // TODO: validate range of options
+        if (!menuOptions.IsMatch(menuSelection) == true)
+
+
         {
-            Console.WriteLine("Even or Odd");
 
-            // Ask the user to type the first number.
-            Console.WriteLine("Type a number to check if is even or odd, and then press Enter:");
-            firstNumberInput = Console.ReadLine();
 
-            // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
-            while (!int.TryParse(firstNumberInput, out firstNumber))
+
+            Console.WriteLine("true");
+
+            if (menuSelection == "7")
             {
-                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                Console.WriteLine("Even or Odd");
+
+                // Ask the user to type the first number.
+                Console.WriteLine("Type a number to check if is even or odd, and then press Enter:");
                 firstNumberInput = Console.ReadLine();
-            }
-        }
 
-        else if (menuSelection == "6")
-        {
-            Console.WriteLine("Square Root");
-
-            // Ask the user to type the first number.
-            Console.WriteLine("Type a number to Calculate the Square Root, and then press Enter:");
-            firstNumberInput = Console.ReadLine();
-
-            // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
-            while (!int.TryParse(firstNumberInput, out firstNumber))
-            {
-                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-                firstNumberInput = Console.ReadLine();
-            }
-        }
-
-        else if ((menuSelection != "9") && (menuSelection != "8"))
-        {
-            // Ask the user to type the first number.
-            Console.WriteLine("Type a number, and then press Enter:");
-            firstNumberInput = Console.ReadLine();
-
-            // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
-            while (!int.TryParse(firstNumberInput, out firstNumber))
-            {
-                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-                firstNumberInput = Console.ReadLine();
+                // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
+                while (!int.TryParse(firstNumberInput, out firstNumber))
+                {
+                    Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                    firstNumberInput = Console.ReadLine();
+                }
             }
 
-            // Ask the user to type the second number.
-            Console.WriteLine("Type another number, and then press Enter:");
-            secondNumberInput = Console.ReadLine();
-
-            while (!int.TryParse(secondNumberInput, out secondNumber))
+            else if (menuSelection == "6")
             {
-                Console.WriteLine("This is not a valid input. Please enter a 1number and then press Enter:");
+                Console.WriteLine("Square Root");
+
+                // Ask the user to type the first number.
+                Console.WriteLine("Type a number to Calculate the Square Root, and then press Enter:");
+                firstNumberInput = Console.ReadLine();
+
+                // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
+                while (!int.TryParse(firstNumberInput, out firstNumber))
+                {
+                    Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                    firstNumberInput = Console.ReadLine();
+                }
+            }
+
+            else if ((menuSelection != "9") && (menuSelection != "8"))
+            {
+                // Ask the user to type the first number.
+                Console.WriteLine("Type a number, and then press Enter:");
+                firstNumberInput = Console.ReadLine();
+
+                // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
+                while (!int.TryParse(firstNumberInput, out firstNumber))
+                {
+                    Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                    firstNumberInput = Console.ReadLine();
+                }
+
+                // Ask the user to type the second number.
+                Console.WriteLine("Type another number, and then press Enter:");
                 secondNumberInput = Console.ReadLine();
-            }
-        }
 
+                while (!int.TryParse(secondNumberInput, out secondNumber))
+                {
+                    Console.WriteLine("This is not a valid input. Please enter a 1number and then press Enter:");
+                    secondNumberInput = Console.ReadLine();
+                }
+            }
+
+        }
     }
+    // else
+    // {
+    //     Console.WriteLine("false");
+
+    // }
 
     switch (menuSelection)
     {
