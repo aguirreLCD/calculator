@@ -30,7 +30,6 @@ int rounds = 0;
 int questionsToPlay = 0;
 int mathCalculations = 0;
 
-
 int firstNumber = 0;
 int secondNumber = 0;
 
@@ -60,75 +59,22 @@ while (menuSelection != "exit")
     Console.WriteLine("Enter your option (or type Exit to exit the program)");
 
     Regex menuOptions = new Regex(@"[A-Z0-9]\d$");
-    // Console.WriteLine($"{menuOptions}");
+
     readResult = Console.ReadLine();
 
-    // Console.WriteLine(Regex.IsMatch(menuSelection, "/[0|1|2|3|4|5|6|7|8|9]ˆ/d$"));
-
-
-    // if ((readResult == null) || (Regex.IsMatch(menuSelection, @"[A-Z0-9]\d")))
-    // {
-    //     Console.WriteLine("This is not a valid option. Please enter a number from MENU and then press Enter:");
-    //     readResult = Console.ReadLine();
-
-    // }
-
-    // else
     if (readResult != null)
     {
-
         while (!int.TryParse(readResult, out firstNumber))
         {
             Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-            // firstNumberInput = Console.ReadLine();
             readResult = Console.ReadLine();
-
         }
+        menuSelection = readResult.ToLower();
 
         // TODO: validate range of options
         // (Regex.IsMatch(menuSelection, @"[A-Z0-9]\d")))
-
-
-        menuSelection = readResult.ToLower();
-
-        // Console.WriteLine(menuOptions.IsMatch(menuSelection));
-        // Console.WriteLine(!menuOptions.IsMatch(menuSelection));
-        // Console.WriteLine(Regex.IsMatch(menuSelection, @"[A-Z0-9]\d"));
-        // Console.WriteLine(Regex.IsMatch(menuSelection, @"/[ˆA-Z0-9]\d$"));
-        // Console.WriteLine(Regex.IsMatch(menuSelection, "ˆ[0-9]/d$"));
-        // Console.WriteLine(Regex.IsMatch(menuSelection, "/[0-9]/d"));
-        // Console.WriteLine(!Regex.IsMatch(menuSelection, "/[0|1|2|3|4|5|6|7|8|9]ˆ/d$"));
-        // Console.WriteLine(Regex.IsMatch(menuSelection, "/[0|1|2|3|4|5|6|7|8|9]ˆ/d$"));
-        // Regex.IsMatch(menuSelection, "ˆ[0-9]/d"))
-        // if (!Regex.IsMatch(menuSelection, "/[0|1|2|3|4|5|6|7|8|9]ˆ/d$"))
-        // {
-        // Console.WriteLine("This is not a valid option. Please enter a number from MENU and then press Enter:");
-        // menuSelection = Console.ReadLine();
-        // Console.WriteLine(menuSelection);
-        // Console.WriteLine("menuSelection");
-        // Console.WriteLine(Regex.IsMatch(menuSelection, "[0-9]d"));
-
-        // Console.WriteLine(menuSelection);
-        // Console.WriteLine("menuSelection");
-        // Console.WriteLine(Regex.IsMatch(menuSelection, "[0-9]/d"));
-
-        // Console.WriteLine(Regex.IsMatch(menuSelection, @"[A-Z0-9]\d"));
-        // if (Regex.IsMatch(menuSelection, @"[A-Z0-9]\d"))
-        // {
-        //     Console.WriteLine("This is not a valid option. Please enter a number from MENU and then press Enter:");
-
-        // }
-
-        // TODO: validate range of options
         if (!menuOptions.IsMatch(menuSelection) == true)
-
-
         {
-
-
-
-            Console.WriteLine("true");
-
             if (menuSelection == "7")
             {
                 Console.WriteLine("Even or Odd");
@@ -144,7 +90,6 @@ while (menuSelection != "exit")
                     firstNumberInput = Console.ReadLine();
                 }
             }
-
             else if (menuSelection == "6")
             {
                 Console.WriteLine("Square Root");
@@ -160,7 +105,6 @@ while (menuSelection != "exit")
                     firstNumberInput = Console.ReadLine();
                 }
             }
-
             else if ((menuSelection != "9") && (menuSelection != "8"))
             {
                 // Ask the user to type the first number.
@@ -184,14 +128,8 @@ while (menuSelection != "exit")
                     secondNumberInput = Console.ReadLine();
                 }
             }
-
         }
     }
-    // else
-    // {
-    //     Console.WriteLine("false");
-
-    // }
 
     switch (menuSelection)
     {
@@ -290,7 +228,6 @@ while (menuSelection != "exit")
             break;
 
         case "8":
-
             Console.WriteLine($"Total Math Calculations:\t\t{correctAnswer}");
             Console.WriteLine();
 
@@ -312,7 +249,6 @@ while (menuSelection != "exit")
             readResult = Console.ReadLine();
             break;
 
-
         case "9":
             Console.WriteLine($"You have done {mathCalculations} Calculations");
             Console.WriteLine();
@@ -331,7 +267,6 @@ while (menuSelection != "exit")
             break;
     }
 }
-
 
 void MakeSum(int firstNumber, int secondNumber)
 {
@@ -473,7 +408,6 @@ void MakeSquare(int firstNumber)
 
 void evenOrOdd(int firstNumber)
 {
-
     if (firstNumber % 2 == 0)
     {
         Console.WriteLine($"{firstNumber} is an even number");
