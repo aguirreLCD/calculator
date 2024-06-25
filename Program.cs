@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-Random number = new Random();
+﻿
 
 string? firstNumberInput = "";
 string? secondNumberInput = "";
@@ -8,7 +6,6 @@ string? secondNumberInput = "";
 int correctAnswer = 0;
 
 int total = 0;
-int result = 0;
 
 int correctAnswerForSum = 0;
 int correctAnswerForSubtraction = 0;
@@ -22,7 +19,6 @@ string? readInputResult;
 string? readResult;
 string menuSelection = "";
 string mathGame = "";
-string lapTime = "";
 
 int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
 int[] score = new int[] { 0, 0, 0, 0, 0 };
@@ -32,15 +28,9 @@ string[] lapTimes = new string[33];
 
 int counter = 0;
 int rounds = 0;
-int counterLap = 0;
 int questionsToPlay = 0;
 int mathCalculations = 0;
 
-// Console.WriteLine();
-// Console.WriteLine("Pick the number of operations if you want to limit the calculations:");
-// readInputResult = Console.ReadLine();
-// validEntry = int.TryParse(readInputResult, out questionsToPlay);
-// Console.WriteLine($"Rounds to play: {questionsToPlay}");
 
 int firstNumber = 0;
 int secondNumber = 0;
@@ -288,8 +278,6 @@ void MakeSum(int firstNumber, int secondNumber)
     correctAnswer++;
     correctAnswerForSum++;
 
-
-
     scores[0, 1] = correctAnswerForSum;
     Console.WriteLine();
 }
@@ -309,7 +297,6 @@ void MakeSubtraction(int firstNumber, int secondNumber)
     correctAnswer++;
     correctAnswerForSubtraction++;
 
-
     scores[1, 1] = correctAnswerForSubtraction;
     Console.WriteLine();
 }
@@ -327,7 +314,6 @@ void MakeMultiplication(int firstNumber, int secondNumber)
 
     correctAnswer++;
     correctAnswerForMultiplication++;
-
 
     scores[2, 1] = correctAnswerForMultiplication;
     Console.WriteLine();
@@ -361,7 +347,6 @@ void MakeDivisionForDecimals(int firstNumber, int secondNumber)
 
     correctAnswer++;
     correctAnswerForDivision++;
-
 
     scores[3, 1] = correctAnswerForDivision;
     Console.WriteLine();
