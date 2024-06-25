@@ -75,9 +75,40 @@ while (menuSelection != "exit")
 
     if (readResult != null)
     {
+
         menuSelection = readResult.ToLower();
 
-        if ((menuSelection != "10") && (menuSelection != "9") && (menuSelection != "8") && (menuSelection != "7") && (menuSelection != "6"))
+        if (menuSelection == "11")
+        {
+            Console.WriteLine("Even or Odd");
+
+            // Ask the user to type the first number.
+            Console.WriteLine("Type a number to check if is even or odd, and then press Enter:");
+            firstNumberInput = Console.ReadLine();
+
+            // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
+            while (!int.TryParse(firstNumberInput, out firstNumber))
+            {
+                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                firstNumberInput = Console.ReadLine();
+            }
+        }
+        else if (menuSelection == "6")
+        {
+            Console.WriteLine("Square Root");
+
+            // Ask the user to type the first number.
+            Console.WriteLine("Type a number to Calculate the Square Root, and then press Enter:");
+            firstNumberInput = Console.ReadLine();
+
+            // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
+            while (!int.TryParse(firstNumberInput, out firstNumber))
+            {
+                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                firstNumberInput = Console.ReadLine();
+            }
+        }
+        else if ((menuSelection != "10") && (menuSelection != "9") && (menuSelection != "8") && (menuSelection != "7") && (menuSelection != "6"))
         {
             // Ask the user to type the first number.
             Console.WriteLine("Type a number, and then press Enter:");
@@ -100,20 +131,6 @@ while (menuSelection != "exit")
                 secondNumberInput = Console.ReadLine();
             }
         }
-        else if (menuSelection == "6")
-        {
-            // Ask the user to type the first number.
-            Console.WriteLine("Type a number to Square, and then press Enter:");
-            firstNumberInput = Console.ReadLine();
-
-            // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
-            while (!int.TryParse(firstNumberInput, out firstNumber))
-            {
-                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-                firstNumberInput = Console.ReadLine();
-            }
-
-        }
     }
 
     switch (menuSelection)
@@ -129,6 +146,8 @@ while (menuSelection != "exit")
             break;
 
         case "1":
+            Console.WriteLine("Addition");
+
             questionsToPlay--;
             mathCalculations++;
 
@@ -139,6 +158,8 @@ while (menuSelection != "exit")
             break;
 
         case "2":
+            Console.WriteLine("Subtraction");
+
             questionsToPlay--;
             mathCalculations++;
 
@@ -149,6 +170,8 @@ while (menuSelection != "exit")
             break;
 
         case "3":
+            Console.WriteLine("Multiplication");
+
             questionsToPlay--;
             mathCalculations++;
 
@@ -159,6 +182,8 @@ while (menuSelection != "exit")
             break;
 
         case "4":
+            Console.WriteLine("Divion for decimals");
+
             questionsToPlay--;
             mathCalculations++;
 
@@ -169,6 +194,8 @@ while (menuSelection != "exit")
             break;
 
         case "5":
+            Console.WriteLine("Division for integers");
+
             questionsToPlay--;
             mathCalculations++;
 
@@ -180,6 +207,8 @@ while (menuSelection != "exit")
             break;
 
         case "6":
+            Console.WriteLine("Square Root");
+
             questionsToPlay--;
             mathCalculations++;
 
@@ -205,7 +234,7 @@ while (menuSelection != "exit")
                 Console.WriteLine($"Yoy have {rounds} rounds to play");
                 GenerateRandomNumbers();
                 GenerateRandomGame(firstNumber, secondNumber);
-                evenOrOdd();
+                evenOrOdd(total: firstNumber);
                 Console.WriteLine();
             }
 
@@ -280,6 +309,16 @@ while (menuSelection != "exit")
             readResult = Console.ReadLine();
             break;
 
+        case "11":
+            questionsToPlay--;
+            // mathCalculations++;
+
+            evenOrOdd(total: firstNumber);
+
+            Console.WriteLine();
+            Console.WriteLine("\n\rPress the Enter key to continue.");
+            readResult = Console.ReadLine();
+            break;
 
     }
 
@@ -309,7 +348,6 @@ void MakeSum(int firstNumber, int secondNumber)
     mathGames[counter] = mathGame;
 
     Console.WriteLine($"Calculate the Sum: {firstNumber} + {secondNumber}");
-
     readInputResult = Console.ReadLine();
     validEntry = int.TryParse(readInputResult, out result);
 
@@ -334,7 +372,6 @@ void MakeSum(int firstNumber, int secondNumber)
 
     scores[0, 1] = correctAnswerForSum;
     Console.WriteLine();
-
 }
 
 void MakeSubtraction(int firstNumber, int secondNumber)
@@ -348,7 +385,6 @@ void MakeSubtraction(int firstNumber, int secondNumber)
     mathGames[counter] = mathGame;
 
     Console.WriteLine($"Calculate the Subtraction: {firstNumber} - {secondNumber}");
-
     readInputResult = Console.ReadLine();
     validEntry = int.TryParse(readInputResult, out result);
 
@@ -385,7 +421,6 @@ void MakeMultiplication(int firstNumber, int secondNumber)
     mathGames[counter] = mathGame;
 
     Console.WriteLine($"Calculate the Multiplication: {firstNumber} * {secondNumber}");
-
     readInputResult = Console.ReadLine();
     validEntry = int.TryParse(readInputResult, out result);
 
@@ -429,11 +464,14 @@ void MakeDivisionForDecimals(int firstNumber, int secondNumber)
     rounds--;
     counter++;
 
+    // saving previous calculations
     decimal firstNum = (decimal)firstNumber;
     decimal totalForDivision = firstNum / secondNumber;
+    decimal totalRounded = Math.Round(totalForDivision, 2);
+    mathGame = String.Format($"{firstNumber} / {secondNumber} = {totalRounded}");
+    mathGames[counter] = mathGame;
 
     Console.WriteLine($"Calculate the Division: {firstNumber} / {secondNumber}");
-
     readInputResult = Console.ReadLine();
     decimal resultDecimal = 0;
     validEntry = decimal.TryParse(readInputResult, out resultDecimal);
@@ -444,11 +482,6 @@ void MakeDivisionForDecimals(int firstNumber, int secondNumber)
         readInputResult = Console.ReadLine();
         validEntry = decimal.TryParse(readInputResult, out resultDecimal);
     }
-
-    decimal totalRounded = Math.Round(totalForDivision, 2);
-
-    mathGame = String.Format($"{firstNumber} / {secondNumber} = {totalRounded}");
-    mathGames[counter] = mathGame;
 
     if (resultDecimal == totalRounded)
     {
@@ -485,11 +518,10 @@ void MakeDivisionForIntegers(int firstNumber, int secondNumber)
 
     total = firstNumber / secondNumber;
 
-    Console.WriteLine($"Calculate the Division: {firstNumber} / {secondNumber}");
-
     mathGame = String.Format($"{firstNumber} / {secondNumber} = {total}");
     mathGames[counter] = mathGame;
 
+    Console.WriteLine($"Calculate the Division: {firstNumber} / {secondNumber}");
     readInputResult = Console.ReadLine();
     validEntry = int.TryParse(readInputResult, out result);
 
@@ -514,7 +546,6 @@ void MakeDivisionForIntegers(int firstNumber, int secondNumber)
 
     scores[3, 1] = correctAnswerForDivision;
     Console.WriteLine();
-
 }
 
 void MakeSquare(int firstNumber)
@@ -528,7 +559,6 @@ void MakeSquare(int firstNumber)
     mathGames[counter] = mathGame;
 
     Console.WriteLine($"Calculate the Square: {firstNumber} x {firstNumber}");
-
     readInputResult = Console.ReadLine();
     validEntry = int.TryParse(readInputResult, out result);
 
@@ -587,8 +617,9 @@ void GenerateRandomGame(int firstNumber, int secondNumber)
     }
 }
 
-void evenOrOdd()
+void evenOrOdd(int total)
 {
+
     if (total % 2 == 0)
     {
         Console.WriteLine($"{total} is an even number");
