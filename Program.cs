@@ -61,12 +61,11 @@ while (menuSelection != "exit")
     Console.WriteLine(" 3. To calculate the Multiplication of two integers");
     Console.WriteLine(" 4. To calculate the Division of two decimals (2 digits rounded)");
     Console.WriteLine(" 5. To calculate the Division of two integers");
-    Console.WriteLine(" 6. To calculate the Square of one integer");
-    Console.WriteLine(" 7. To play the Random Math Game");
+    Console.WriteLine(" 6. To calculate the Square Root of one integer");
+    Console.WriteLine(" 7. To check if one integer is Even or Odd");
 
-    Console.WriteLine(" 8. To display the scores");
+    Console.WriteLine(" 8. To display the operations");
     Console.WriteLine(" 9. To display the previous Math Calculations");
-    Console.WriteLine(" 10. To display the previous time lapses for Random Math Games");
 
     Console.WriteLine();
     Console.WriteLine("Enter your option (or type Exit to exit the program)");
@@ -75,10 +74,10 @@ while (menuSelection != "exit")
 
     if (readResult != null)
     {
-
         menuSelection = readResult.ToLower();
 
-        if (menuSelection == "11")
+        // TODO: validate range of options
+        if (menuSelection == "7")
         {
             Console.WriteLine("Even or Odd");
 
@@ -108,7 +107,7 @@ while (menuSelection != "exit")
                 firstNumberInput = Console.ReadLine();
             }
         }
-        else if ((menuSelection != "10") && (menuSelection != "9") && (menuSelection != "8") && (menuSelection != "7") && (menuSelection != "6"))
+        else if ((menuSelection != "9") && (menuSelection != "8"))
         {
             // Ask the user to type the first number.
             Console.WriteLine("Type a number, and then press Enter:");
@@ -131,6 +130,7 @@ while (menuSelection != "exit")
                 secondNumberInput = Console.ReadLine();
             }
         }
+
     }
 
     switch (menuSelection)
@@ -222,47 +222,23 @@ while (menuSelection != "exit")
         case "7":
             questionsToPlay--;
 
-            Console.WriteLine("Random Math Game:");
-            Console.WriteLine("Pick the number of questions:");
-            readInputResult = Console.ReadLine();
-            validEntry = int.TryParse(readInputResult, out rounds);
-
-            var stopWatch = Stopwatch.StartNew();
-
-            while (rounds > 0)
-            {
-                Console.WriteLine($"Yoy have {rounds} rounds to play");
-                GenerateRandomNumbers();
-                GenerateRandomGame(firstNumber, secondNumber);
-                evenOrOdd(total: firstNumber);
-                Console.WriteLine();
-            }
-
-            Console.WriteLine("End of Random Math Game");
-
-            stopWatch.Stop();
-            // Console.WriteLine(stopWatch.Elapsed.Seconds);
-            Console.WriteLine($"You took: {stopWatch.Elapsed.Seconds} seconds to complete the game.");
-
-            counterLap++;
-            lapTime = String.Format($"{stopWatch.Elapsed.Seconds}");
-            lapTimes[counterLap] = lapTime;
+            evenOrOdd(firstNumber);
 
             Console.WriteLine();
             Console.WriteLine("\n\rPress the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
 
-
         case "8":
-            Console.WriteLine("Scores:");
 
-            Console.WriteLine($"Total Correct answers:\t{correctAnswer}");
-            Console.WriteLine($"\tTotal Correct answers for Sum:\t\t\t{correctAnswerForSum}");
-            Console.WriteLine($"\tTotal Correct answers for Subtraction:\t\t{correctAnswerForSubtraction}");
-            Console.WriteLine($"\tTotal Correct answers for Multiplication:\t{correctAnswerForMultiplication}");
-            Console.WriteLine($"\tTotal Correct answers for Division:\t\t{correctAnswerForDivision}");
-            Console.WriteLine($"\tTotal Correct answers for Square:\t\t{correctAnswerForSquare}");
+            Console.WriteLine($"Total Math Calculations:\t\t{correctAnswer}");
+            Console.WriteLine();
+
+            Console.WriteLine($"\tTotal for Addition:\t\t{correctAnswerForSum}");
+            Console.WriteLine($"\tTotal for Subtraction:\t\t{correctAnswerForSubtraction}");
+            Console.WriteLine($"\tTotal for Multiplication:\t{correctAnswerForMultiplication}");
+            Console.WriteLine($"\tTotal for Division:\t\t{correctAnswerForDivision}");
+            Console.WriteLine($"\tTotal for SquareRoot:\t\t{correctAnswerForSquare}");
 
             for (int i = 0; i < scores.Length / 2; i++)
             {
@@ -293,49 +269,9 @@ while (menuSelection != "exit")
             Console.WriteLine("\n\rPress the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
-
-        case "10":
-            Console.WriteLine("Previus Lap Times for Random Math Games:");
-            for (int i = 0; i < lapTimes.Length; i++)
-            {
-                if (lapTimes[i] != null)
-                {
-                    Console.WriteLine();
-                    Console.Write($"\tRandomGame {i}");
-                    Console.Write($"\t{lapTimes[i]} seconds\n");
-                }
-            }
-            Console.WriteLine("\n\rPress the Enter key to continue.");
-            readResult = Console.ReadLine();
-            break;
-
-        case "11":
-            questionsToPlay--;
-            // mathCalculations++;
-
-            evenOrOdd(total: firstNumber);
-
-            Console.WriteLine();
-            Console.WriteLine("\n\rPress the Enter key to continue.");
-            readResult = Console.ReadLine();
-            break;
-
     }
-
 }
 
-void GenerateRandomNumbers()
-{
-    firstNumber = number.Next(0, 101);
-    secondNumber = number.Next(0, 101);
-
-    if ((firstNumber == 0) && (secondNumber == 0))
-    {
-        firstNumber = number.Next(0, 101);
-        secondNumber = number.Next(0, 101);
-    }
-
-}
 
 void MakeSum(int firstNumber, int secondNumber)
 {
@@ -347,28 +283,12 @@ void MakeSum(int firstNumber, int secondNumber)
     mathGame = String.Format($"{firstNumber} + {secondNumber} = {total}");
     mathGames[counter] = mathGame;
 
-    Console.WriteLine($"Calculate the Sum: {firstNumber} + {secondNumber}");
-    readInputResult = Console.ReadLine();
-    validEntry = int.TryParse(readInputResult, out result);
+    Console.WriteLine($"{firstNumber} + {secondNumber} = {total}");
 
-    while (validEntry == false)
-    {
-        Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-        readInputResult = Console.ReadLine();
-        validEntry = int.TryParse(readInputResult, out result);
-    }
+    correctAnswer++;
+    correctAnswerForSum++;
 
-    if (result == total)
-    {
-        Console.WriteLine("Correct answer for Addition ");
-        correctAnswer++;
-        correctAnswerForSum++;
-    }
-    else
-    {
-        Console.WriteLine("Wrong answer for Addition ");
-        Console.WriteLine($"Correct: {total}");
-    }
+
 
     scores[0, 1] = correctAnswerForSum;
     Console.WriteLine();
@@ -384,28 +304,11 @@ void MakeSubtraction(int firstNumber, int secondNumber)
     mathGame = String.Format($"{firstNumber} - {secondNumber} = {total}");
     mathGames[counter] = mathGame;
 
-    Console.WriteLine($"Calculate the Subtraction: {firstNumber} - {secondNumber}");
-    readInputResult = Console.ReadLine();
-    validEntry = int.TryParse(readInputResult, out result);
+    Console.WriteLine($"{firstNumber} - {secondNumber} = {total}");
 
-    while (validEntry == false)
-    {
-        Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-        readInputResult = Console.ReadLine();
-        validEntry = int.TryParse(readInputResult, out result);
-    }
+    correctAnswer++;
+    correctAnswerForSubtraction++;
 
-    if (result == total)
-    {
-        Console.WriteLine("Correct answer for Subtraction ");
-        correctAnswer++;
-        correctAnswerForSubtraction++;
-    }
-    else
-    {
-        Console.WriteLine("Wrong answer for Subtraction ");
-        Console.WriteLine($"Correct: {total}");
-    }
 
     scores[1, 1] = correctAnswerForSubtraction;
     Console.WriteLine();
@@ -420,28 +323,11 @@ void MakeMultiplication(int firstNumber, int secondNumber)
     mathGame = String.Format($"{firstNumber} * {secondNumber} = {total}");
     mathGames[counter] = mathGame;
 
-    Console.WriteLine($"Calculate the Multiplication: {firstNumber} * {secondNumber}");
-    readInputResult = Console.ReadLine();
-    validEntry = int.TryParse(readInputResult, out result);
+    Console.WriteLine($"{firstNumber} * {secondNumber} = {total}");
 
-    while (validEntry == false)
-    {
-        Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-        readInputResult = Console.ReadLine();
-        validEntry = int.TryParse(readInputResult, out result);
-    }
+    correctAnswer++;
+    correctAnswerForMultiplication++;
 
-    if (result == total)
-    {
-        Console.WriteLine("Correct answer for Multiplication ");
-        correctAnswer++;
-        correctAnswerForMultiplication++;
-    }
-    else
-    {
-        Console.WriteLine("Wrong answer for Multiplication ");
-        Console.WriteLine($"Correct: {total}");
-    }
 
     scores[2, 1] = correctAnswerForMultiplication;
     Console.WriteLine();
@@ -471,29 +357,11 @@ void MakeDivisionForDecimals(int firstNumber, int secondNumber)
     mathGame = String.Format($"{firstNumber} / {secondNumber} = {totalRounded}");
     mathGames[counter] = mathGame;
 
-    Console.WriteLine($"Calculate the Division: {firstNumber} / {secondNumber}");
-    readInputResult = Console.ReadLine();
-    decimal resultDecimal = 0;
-    validEntry = decimal.TryParse(readInputResult, out resultDecimal);
+    Console.WriteLine($"{firstNumber} / {secondNumber} = {totalRounded}");
 
-    while (validEntry == false)
-    {
-        Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-        readInputResult = Console.ReadLine();
-        validEntry = decimal.TryParse(readInputResult, out resultDecimal);
-    }
+    correctAnswer++;
+    correctAnswerForDivision++;
 
-    if (resultDecimal == totalRounded)
-    {
-        Console.WriteLine("Correct answer for Division ");
-        correctAnswer++;
-        correctAnswerForDivision++;
-    }
-    else
-    {
-        Console.WriteLine("Wrong answer for Division ");
-        Console.WriteLine($"Correct: {totalRounded}");
-    }
 
     scores[3, 1] = correctAnswerForDivision;
     Console.WriteLine();
@@ -521,28 +389,10 @@ void MakeDivisionForIntegers(int firstNumber, int secondNumber)
     mathGame = String.Format($"{firstNumber} / {secondNumber} = {total}");
     mathGames[counter] = mathGame;
 
-    Console.WriteLine($"Calculate the Division: {firstNumber} / {secondNumber}");
-    readInputResult = Console.ReadLine();
-    validEntry = int.TryParse(readInputResult, out result);
+    Console.WriteLine($"{firstNumber} / {secondNumber} = {total}");
 
-    while (validEntry == false)
-    {
-        Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-        readInputResult = Console.ReadLine();
-        validEntry = int.TryParse(readInputResult, out result);
-    }
-
-    if (result == total)
-    {
-        Console.WriteLine("Correct answer for Division ");
-        correctAnswer++;
-        correctAnswerForDivision++;
-    }
-    else
-    {
-        Console.WriteLine("Wrong answer for Division ");
-        Console.WriteLine($"Correct: {total}");
-    }
+    correctAnswer++;
+    correctAnswerForDivision++;
 
     scores[3, 1] = correctAnswerForDivision;
     Console.WriteLine();
@@ -558,66 +408,15 @@ void MakeSquare(int firstNumber)
     mathGame = String.Format($"{firstNumber} * {firstNumber} = {total}");
     mathGames[counter] = mathGame;
 
-    Console.WriteLine($"Calculate the Square: {firstNumber} x {firstNumber}");
-    readInputResult = Console.ReadLine();
-    validEntry = int.TryParse(readInputResult, out result);
-
-    while (validEntry == false)
-    {
-        Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-        readInputResult = Console.ReadLine();
-        validEntry = int.TryParse(readInputResult, out result);
-    }
-
-    if (result == total)
-    {
-        Console.WriteLine("Correct answer for Square ");
-        correctAnswer++;
-        correctAnswerForSquare++;
-    }
-    else
-    {
-        Console.WriteLine("Wrong answer for Square ");
-        Console.WriteLine($"Correct: {total}");
-    }
+    Console.WriteLine($"{firstNumber} * {firstNumber} = {total}");
+    correctAnswer++;
+    correctAnswerForSquare++;
 
     scores[4, 1] = correctAnswerForSquare;
     Console.WriteLine();
 }
 
-void GenerateRandomGame(int firstNumber, int secondNumber)
-{
-    // create some logic to random operations
-    int randomMathGame = number.Next(mathOperations.Length);
-
-    if (randomMathGame == 1)
-    {
-        mathCalculations++;
-        MakeSum(firstNumber, secondNumber);
-    }
-    else if (randomMathGame == 2)
-    {
-        mathCalculations++;
-        MakeSubtraction(firstNumber, secondNumber);
-    }
-    else if (randomMathGame == 3)
-    {
-        mathCalculations++;
-        MakeMultiplication(firstNumber, secondNumber);
-    }
-    else if (randomMathGame == 4)
-    {
-        mathCalculations++;
-        MakeDivisionForIntegers(firstNumber, secondNumber);
-    }
-    else
-    {
-        mathCalculations++;
-        MakeSquare(firstNumber);
-    }
-}
-
-void evenOrOdd(int total)
+void evenOrOdd(int firstNumber)
 {
 
     if (total % 2 == 0)
