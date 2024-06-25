@@ -2,16 +2,9 @@
 
 Random number = new Random();
 
-// int firstNumber = number.Next(0, 101);
-// int secondNumber = number.Next(0, 101);
-
-
-
 string? firstNumberInput = "";
 string? secondNumberInput = "";
 
-// int firstNumberInput = 0;
-// int secondNumberInput = 0;
 int correctAnswer = 0;
 
 int total = 0;
@@ -78,9 +71,7 @@ while (menuSelection != "exit")
     Console.WriteLine();
     Console.WriteLine("Enter your option (or type Exit to exit the program)");
 
-
     readResult = Console.ReadLine();
-
 
     if (readResult != null)
     {
@@ -124,7 +115,6 @@ while (menuSelection != "exit")
 
         }
     }
-
 
     switch (menuSelection)
     {
@@ -200,7 +190,6 @@ while (menuSelection != "exit")
             readResult = Console.ReadLine();
             break;
 
-
         case "7":
             questionsToPlay--;
 
@@ -260,7 +249,11 @@ while (menuSelection != "exit")
 
 
         case "9":
+            Console.WriteLine($"You have done {mathCalculations} Calculations");
+            Console.WriteLine();
             Console.WriteLine("Previus Math Calculations:");
+            Console.WriteLine();
+
             for (int i = 0; i < mathGames.Length; i++)
             {
                 if (mathGames[i] != null)
@@ -286,6 +279,8 @@ while (menuSelection != "exit")
             Console.WriteLine("\n\rPress the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
+
+
     }
 
 }
@@ -309,7 +304,6 @@ void MakeSum(int firstNumber, int secondNumber)
     counter++;
 
     total = firstNumber + secondNumber;
-    Console.WriteLine($"Total sum {total}");
 
     mathGame = String.Format($"{firstNumber} + {secondNumber} = {total}");
     mathGames[counter] = mathGame;
@@ -326,7 +320,6 @@ void MakeSum(int firstNumber, int secondNumber)
         validEntry = int.TryParse(readInputResult, out result);
     }
 
-
     if (result == total)
     {
         Console.WriteLine("Correct answer for Addition ");
@@ -338,7 +331,6 @@ void MakeSum(int firstNumber, int secondNumber)
         Console.WriteLine("Wrong answer for Addition ");
         Console.WriteLine($"Correct: {total}");
     }
-
 
     scores[0, 1] = correctAnswerForSum;
     Console.WriteLine();
@@ -359,7 +351,6 @@ void MakeSubtraction(int firstNumber, int secondNumber)
 
     readInputResult = Console.ReadLine();
     validEntry = int.TryParse(readInputResult, out result);
-
 
     while (validEntry == false)
     {
@@ -480,8 +471,6 @@ void MakeDivisionForIntegers(int firstNumber, int secondNumber)
     while (secondNumber == 0)
     {
         Console.WriteLine("Number mustn't be zero. Type another number, and then press Enter:");
-        // secondNumber = Convert.ToInt32(Console.ReadLine());
-
         secondNumberInput = Console.ReadLine();
 
         while (!int.TryParse(secondNumberInput, out secondNumber))
@@ -530,7 +519,6 @@ void MakeDivisionForIntegers(int firstNumber, int secondNumber)
 
 void MakeSquare(int firstNumber)
 {
-
     rounds--;
     counter++;
 
@@ -565,7 +553,6 @@ void MakeSquare(int firstNumber)
 
     scores[4, 1] = correctAnswerForSquare;
     Console.WriteLine();
-
 }
 
 void GenerateRandomGame(int firstNumber, int secondNumber)
@@ -575,22 +562,27 @@ void GenerateRandomGame(int firstNumber, int secondNumber)
 
     if (randomMathGame == 1)
     {
+        mathCalculations++;
         MakeSum(firstNumber, secondNumber);
     }
     else if (randomMathGame == 2)
     {
+        mathCalculations++;
         MakeSubtraction(firstNumber, secondNumber);
     }
     else if (randomMathGame == 3)
     {
+        mathCalculations++;
         MakeMultiplication(firstNumber, secondNumber);
     }
     else if (randomMathGame == 4)
     {
+        mathCalculations++;
         MakeDivisionForIntegers(firstNumber, secondNumber);
     }
     else
     {
+        mathCalculations++;
         MakeSquare(firstNumber);
     }
 }
