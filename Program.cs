@@ -394,27 +394,25 @@ void evenOrOdd(float firstNumber)
     }
 }
 
+// void DisplayLatestMathCalculations()
+// {
+//     string deleteBtn = "X";
 
-void DisplayLatestMathCalculations()
-{
-    string deleteBtn = "X";
-
-    for (int i = 0; i < mathGames.Length; i++)
-    {
-        if (mathGames[i] != null)
-        {
-            // Console.WriteLine(mathGames[i]);
-            Console.WriteLine();
-            Console.Write($"\t{mathGames[i]}");
-            Console.Write($"\t{deleteBtn}\n");
-        }
-        // Console.WriteLine(Console.ReadKey());
-    }
-}
+//     for (int i = 0; i < mathGames.Length; i++)
+//     {
+//         if (mathGames[i] != null)
+//         {
+//             // Console.WriteLine(mathGames[i]);
+//             Console.WriteLine();
+//             Console.Write($"\t{mathGames[i]}");
+//             Console.Write($"\t{deleteBtn}\n");
+//         }
+//         // Console.WriteLine(Console.ReadKey());
+//     }
+// }
 
 void DeleteLatestMathCalculations()
 {
-
     string deleteBtn = "x";
 
     for (int i = 0; i < mathGames.Length; i++)
@@ -427,36 +425,43 @@ void DeleteLatestMathCalculations()
         }
     }
 
-    Console.Write($"Press 'y' to delete all the calculations, or press any other key and Enter to delete specific calculation: ");
+    // TODO: Ask only if array is not null
+    Console.Write($"Do you want to delete some or all calculations? y or n?");
+
     if (Console.ReadLine() == "y")
     {
+        Console.Write($"Press 'd' to delete all the calculations, or press any other key and Enter to delete only specifics calculations: ");
+        if (Console.ReadLine() == "d")
+        {
+            for (int i = 0; i < mathGames.Length; i++)
+            {
+                if (mathGames[i] != null)
+                {
+                    // "delete" the array
+                    mathGames.SetValue(null, i);
+                    mathCalculations--;
+                }
+            }
+        }
+
         for (int i = 0; i < mathGames.Length; i++)
         {
             if (mathGames[i] != null)
             {
-                // "delete" the array
-                mathGames.SetValue(null, i);
-                mathCalculations--;
+                // Wait for the user to respond before closing.
+                Console.Write($"Press 'x' to delete the {mathGames[i]} calculation, or press any other key and Enter to continue: ");
+                if (Console.ReadLine() == "x")
+                {
+                    // "delete" the item 
+                    // Console.WriteLine();
+                    mathGames.SetValue(null, i);
+                    mathCalculations--;
+                }
             }
         }
     }
 
-    for (int i = 0; i < mathGames.Length; i++)
-    {
-        if (mathGames[i] != null)
-        {
-            // Wait for the user to respond before closing.
-            Console.Write($"Press 'x' to delete the {mathGames[i]} calculation, or press any other key and Enter to continue: ");
-            if (Console.ReadLine() == "x")
-            {
-                // "delete" the item 
-                Console.WriteLine();
 
-                mathGames.SetValue(null, i);
-                mathCalculations--;
-            }
-        }
-    }
 
     Console.WriteLine("\n"); // Friendly linespacing.
 }
