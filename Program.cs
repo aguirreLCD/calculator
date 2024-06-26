@@ -459,8 +459,8 @@ void DeleteLatestMathCalculations()
                 // TODO: delete the list
                 Console.WriteLine();
                 // Console.Write($"\t{mathGames[i]}");
-                mathGames[i] = "null";
-
+                // mathGames[i] = "null";
+                mathGames.SetValue(null, i);
 
             }
 
