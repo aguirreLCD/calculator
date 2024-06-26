@@ -453,7 +453,7 @@ void DeleteLatestMathCalculations()
             // Console.Write($"\t{mathGames[i]}");
             // Console.Write($"\t{deleteBtn}\n");
             // Wait for the user to respond before closing.
-            // Console.Write("Press 'x' to delete the list, or press any other key and Enter to continue: ");
+            Console.Write($"Press 'x' to delete the {mathGames[i]} calculation, or press any other key and Enter to continue: ");
             if (Console.ReadLine() == "x")
             {
                 // TODO: delete the list
