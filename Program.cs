@@ -59,7 +59,7 @@ while (menuSelection != "exit")
 
     // TODO: validate for option 0 
     // || (readResult == "0") ---  && (readResult != "0")
-    if (readResult != null) 
+    if (readResult != null)
     {
         // validate for input string
         while (!float.TryParse(readResult, out firstNumber))
@@ -236,13 +236,9 @@ while (menuSelection != "exit")
             Console.WriteLine("Previus Math Calculations:");
             Console.WriteLine();
 
-            for (int i = 0; i < mathGames.Length; i++)
-            {
-                if (mathGames[i] != null)
-                {
-                    Console.WriteLine(mathGames[i]);
-                }
-            }
+            // DisplayLatestMathCalculations();
+            DeleteLatestMathCalculations();
+
             Console.WriteLine("\n\rPress the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
@@ -322,10 +318,6 @@ void MakeDivisionForDecimals(float firstNumber, float secondNumber)
     rounds--;
     counter++;
 
-    // saving previous calculations
-    // decimal firstNum = (decimal)firstNumber;
-    // decimal totalForDivision = firstNum / secondNumber;
-    // decimal totalRounded = Math.Round(totalForDivision, 2);
     total = firstNumber / secondNumber;
     double totalRounded = Math.Round(total, 2);
 
@@ -403,7 +395,94 @@ void evenOrOdd(float firstNumber)
 }
 
 
+void DisplayLatestMathCalculations()
+{
+
+    string deleteBtn = "X";
+
+    for (int i = 0; i < mathGames.Length; i++)
+    {
+        if (mathGames[i] != null)
+        {
+            // Console.WriteLine(mathGames[i]);
+            Console.WriteLine();
+            Console.Write($"\t{mathGames[i]}");
+            Console.Write($"\t{deleteBtn}\n");
+        }
+
+        // Console.WriteLine(Console.ReadKey());
 
 
+    }
+
+
+
+
+
+
+}
+
+
+void DeleteLatestMathCalculations()
+{
+
+    string deleteBtn = "x";
+
+
+    for (int i = 0; i < mathGames.Length; i++)
+    {
+        if (mathGames[i] != null)
+        {
+            // Console.WriteLine(mathGames[i]);
+            Console.WriteLine();
+            Console.Write($"\t{mathGames[i]}");
+            Console.Write($"\t{deleteBtn}\n");
+
+
+        }
+
+
+    }
+
+    for (int i = 0; i < mathGames.Length; i++)
+    {
+        if (mathGames[i] != null)
+        {
+            // Console.WriteLine(mathGames[i]);
+            // Console.WriteLine();
+            // Console.Write($"\t{mathGames[i]}");
+            // Console.Write($"\t{deleteBtn}\n");
+            // Wait for the user to respond before closing.
+            // Console.Write("Press 'x' to delete the list, or press any other key and Enter to continue: ");
+            if (Console.ReadLine() == "x")
+            {
+                // TODO: delete the list
+                Console.WriteLine();
+                // Console.Write($"\t{mathGames[i]}");
+                mathGames[i] = "null";
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+
+    // Wait for the user to respond before closing.
+    // Console.Write("Press 'x' to delete the list, or press any other key and Enter to continue: ");
+    // if (Console.ReadLine() == "x")
+    // {
+    //     // delete the list
+    //     Console.WriteLine();
+
+    // }
+
+
+    Console.WriteLine("\n"); // Friendly linespacing.
+}
 
 
