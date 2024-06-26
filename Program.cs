@@ -397,7 +397,6 @@ void evenOrOdd(float firstNumber)
 
 void DisplayLatestMathCalculations()
 {
-
     string deleteBtn = "X";
 
     for (int i = 0; i < mathGames.Length; i++)
@@ -409,78 +408,55 @@ void DisplayLatestMathCalculations()
             Console.Write($"\t{mathGames[i]}");
             Console.Write($"\t{deleteBtn}\n");
         }
-
         // Console.WriteLine(Console.ReadKey());
-
-
     }
-
-
-
-
-
-
 }
-
 
 void DeleteLatestMathCalculations()
 {
 
     string deleteBtn = "x";
 
-
     for (int i = 0; i < mathGames.Length; i++)
     {
         if (mathGames[i] != null)
         {
-            // Console.WriteLine(mathGames[i]);
             Console.WriteLine();
             Console.Write($"\t{mathGames[i]}");
             Console.Write($"\t{deleteBtn}\n");
-
-
         }
+    }
 
-
+    Console.Write($"Press 'y' to delete all the calculations, or press any other key and Enter to delete specific calculation: ");
+    if (Console.ReadLine() == "y")
+    {
+        for (int i = 0; i < mathGames.Length; i++)
+        {
+            if (mathGames[i] != null)
+            {
+                // "delete" the array
+                mathGames.SetValue(null, i);
+                mathCalculations--;
+            }
+        }
     }
 
     for (int i = 0; i < mathGames.Length; i++)
     {
         if (mathGames[i] != null)
         {
-            // Console.WriteLine(mathGames[i]);
-            // Console.WriteLine();
-            // Console.Write($"\t{mathGames[i]}");
-            // Console.Write($"\t{deleteBtn}\n");
             // Wait for the user to respond before closing.
             Console.Write($"Press 'x' to delete the {mathGames[i]} calculation, or press any other key and Enter to continue: ");
             if (Console.ReadLine() == "x")
             {
-                // TODO: delete the list
+                // "delete" the item 
                 Console.WriteLine();
-                // Console.Write($"\t{mathGames[i]}");
-                // mathGames[i] = "null";
+
                 mathGames.SetValue(null, i);
-
+                mathCalculations--;
             }
-
-
         }
-
-
     }
-
-
-
-    // Wait for the user to respond before closing.
-    // Console.Write("Press 'x' to delete the list, or press any other key and Enter to continue: ");
-    // if (Console.ReadLine() == "x")
-    // {
-    //     // delete the list
-    //     Console.WriteLine();
-
-    // }
-
 
     Console.WriteLine("\n"); // Friendly linespacing.
 }
