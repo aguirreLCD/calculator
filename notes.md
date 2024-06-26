@@ -9,3 +9,5 @@ in launch.json file:
 
 dotnet new gitignore
 The template "dotnet gitignore file" was created successfully.
+
+
