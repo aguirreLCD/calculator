@@ -489,6 +489,4 @@ $RECYCLE.BIN/
 .vscode/launch.json 
 .vscode/extensions.json
 
-
-calculator.csproj
-calculator.sln
+../.DS_Store
