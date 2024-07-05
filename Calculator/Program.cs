@@ -11,13 +11,13 @@ namespace CalculatorProgram
             string? firstNumberInput = "";
             string? secondNumberInput = "";
 
-            int correctAnswer = 0;
+            // int correctAnswer = 0;
 
             double total = 0;
 
-            int correctAnswerForSum = 0;
-            int correctAnswerForSubtraction = 0;
-            int correctAnswerForMultiplication = 0;
+            int answerForSum = 0;
+            int answerForSubtraction = 0;
+            int answerForMultiplication = 0;
             int correctAnswerForDivision = 0;
             int correctAnswerForSquare = 0;
 
@@ -147,8 +147,9 @@ namespace CalculatorProgram
                         mathCalculations++;
                         // counter++;
 
+                        answerForSum++;
                         // MakeSum(firstNumber, secondNumber);
-                        total = CalculatorLibrary.Calculator.MakeSum(firstNumber, secondNumber, mathCalculations, mathGames);
+                        total = CalculatorLibrary.Calculator.MakeSum(firstNumber, secondNumber, mathCalculations, mathGames, answerForSum, scores);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -158,9 +159,10 @@ namespace CalculatorProgram
                         Console.WriteLine("Subtraction");
 
                         mathCalculations++;
+                        answerForSubtraction++;
 
                         // MakeSubtraction(firstNumber, secondNumber);
-                        total = CalculatorLibrary.Calculator.MakeSubtraction(firstNumber, secondNumber, mathCalculations, mathGames);
+                        total = CalculatorLibrary.Calculator.MakeSubtraction(firstNumber, secondNumber, mathCalculations, mathGames, answerForSubtraction, scores);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -170,9 +172,9 @@ namespace CalculatorProgram
                         Console.WriteLine("Multiplication");
 
                         mathCalculations++;
-
+                        answerForMultiplication++;
                         // MakeMultiplication(firstNumber, secondNumber);
-                        total = CalculatorLibrary.Calculator.MakeMultiplication(firstNumber, secondNumber, mathCalculations, mathGames);
+                        total = CalculatorLibrary.Calculator.MakeMultiplication(firstNumber, secondNumber, mathCalculations, mathGames, answerForMultiplication, scores);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -226,35 +228,49 @@ namespace CalculatorProgram
                         break;
 
                     case "8":
-                        Console.WriteLine($"Total Math Calculations:\t\t{correctAnswer}");
+                        Console.WriteLine($"Total Math Calculations:\t\t{mathCalculations}");
                         Console.WriteLine();
 
-                        Console.WriteLine($"\tTotal for Addition:\t\t{correctAnswerForSum}");
-                        Console.WriteLine($"\tTotal for Subtraction:\t\t{correctAnswerForSubtraction}");
-                        Console.WriteLine($"\tTotal for Multiplication:\t{correctAnswerForMultiplication}");
+                        Console.WriteLine($"\tTotal for Addition:\t\t{answerForSum}");
+                        Console.WriteLine($"\tTotal for Subtraction:\t\t{answerForSubtraction}");
+                        Console.WriteLine($"\tTotal for Multiplication:\t{answerForMultiplication}");
                         Console.WriteLine($"\tTotal for Division:\t\t{correctAnswerForDivision}");
                         Console.WriteLine($"\tTotal for SquareRoot:\t\t{correctAnswerForSquare}");
 
-                        for (int i = 0; i < scores.Length / 2; i++)
-                        {
-                            Console.WriteLine();
-                            Console.Write($"\t{mathOperations[i]}");
-                            Console.Write($"\t{scores[i, 1]}\n");
+                        // for (int i = 0; i < scores.Length / 2; i++)
+                        // {
+                        //     Console.WriteLine();
+                        //     Console.Write($"\t{mathOperations[i]}");
+                        //     Console.Write($"\t{scores[i, 1]}\n");
 
-                        }
+                        // }
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
                         break;
 
                     case "9":
+                        // Console.WriteLine($"You have done {mathCalculations} Calculations");
+                        // Console.WriteLine();
+                        // Console.WriteLine("Previus Math Calculations:");
+                        // Console.WriteLine();
+
+
+                        Console.WriteLine();
                         Console.WriteLine($"You have done {mathCalculations} Calculations");
                         Console.WriteLine();
                         Console.WriteLine("Previus Math Calculations:");
                         Console.WriteLine();
 
-
-
+                        for (int i = 0; i < mathGames.Length; i++)
+                        {
+                            if (mathGames[i] != null)
+                            {
+                                Console.WriteLine();
+                                Console.Write($"\t{mathGames[i]}");
+                            }
+                        }
+                        Console.WriteLine();
                         // DisplayLatestMathCalculations();
                         // DeleteLatestMathCalculations();
 
