@@ -213,22 +213,26 @@
         //     }
         // }
 
-        // //public void DisplayLatestMathCalculations()
-        // // {
-        // //     string deleteBtn = "X";
+        public static string DisplayLatestMathCalculations(int mathCalculations, string[] mathGames)
+        {
 
-        // //     for (int i = 0; i < mathGames.Length; i++)
-        // //     {
-        // //         if (mathGames[i] != null)
-        // //         {
-        // //             // Console.WriteLine(mathGames[i]);
-        // //             Console.WriteLine();
-        // //             Console.Write($"\t{mathGames[i]}");
-        // //             Console.Write($"\t{deleteBtn}\n");
-        // //         }
-        // //         // Console.WriteLine(Console.ReadKey());
-        // //     }
-        // // }
+            string mathGame = "";
+            Console.WriteLine();
+            Console.WriteLine($"You have done {mathCalculations} Calculations");
+            Console.WriteLine();
+            Console.WriteLine("Previus Math Calculations:");
+            Console.WriteLine();
+
+            for (int i = 0; i < mathGames.Length; i++)
+            {
+                if (mathGames[i] != null)
+                {
+                    Console.WriteLine();
+                    Console.Write($"\t{mathGames[i]}");
+                }
+            }
+            return mathGame;
+        }
 
 
         // public void DeleteLatestMathCalculations()

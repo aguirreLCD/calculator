@@ -145,10 +145,8 @@ namespace CalculatorProgram
                         Console.WriteLine("Addition");
 
                         mathCalculations++;
-                        // counter++;
-
                         answerForSum++;
-                        // MakeSum(firstNumber, secondNumber);
+
                         total = CalculatorLibrary.Calculator.MakeSum(firstNumber, secondNumber, mathCalculations, mathGames, answerForSum, scores);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -161,7 +159,6 @@ namespace CalculatorProgram
                         mathCalculations++;
                         answerForSubtraction++;
 
-                        // MakeSubtraction(firstNumber, secondNumber);
                         total = CalculatorLibrary.Calculator.MakeSubtraction(firstNumber, secondNumber, mathCalculations, mathGames, answerForSubtraction, scores);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -173,7 +170,7 @@ namespace CalculatorProgram
 
                         mathCalculations++;
                         answerForMultiplication++;
-                        // MakeMultiplication(firstNumber, secondNumber);
+
                         total = CalculatorLibrary.Calculator.MakeMultiplication(firstNumber, secondNumber, mathCalculations, mathGames, answerForMultiplication, scores);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -237,41 +234,29 @@ namespace CalculatorProgram
                         Console.WriteLine($"\tTotal for Division:\t\t{correctAnswerForDivision}");
                         Console.WriteLine($"\tTotal for SquareRoot:\t\t{correctAnswerForSquare}");
 
-                        // for (int i = 0; i < scores.Length / 2; i++)
-                        // {
-                        //     Console.WriteLine();
-                        //     Console.Write($"\t{mathOperations[i]}");
-                        //     Console.Write($"\t{scores[i, 1]}\n");
-
-                        // }
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
                         break;
 
                     case "9":
+
+                        // Console.WriteLine();
                         // Console.WriteLine($"You have done {mathCalculations} Calculations");
                         // Console.WriteLine();
                         // Console.WriteLine("Previus Math Calculations:");
                         // Console.WriteLine();
 
-
-                        Console.WriteLine();
-                        Console.WriteLine($"You have done {mathCalculations} Calculations");
-                        Console.WriteLine();
-                        Console.WriteLine("Previus Math Calculations:");
-                        Console.WriteLine();
-
-                        for (int i = 0; i < mathGames.Length; i++)
-                        {
-                            if (mathGames[i] != null)
-                            {
-                                Console.WriteLine();
-                                Console.Write($"\t{mathGames[i]}");
-                            }
-                        }
-                        Console.WriteLine();
-                        // DisplayLatestMathCalculations();
+                        // for (int i = 0; i < mathGames.Length; i++)
+                        // {
+                        //     if (mathGames[i] != null)
+                        //     {
+                        //         Console.WriteLine();
+                        //         Console.Write($"\t{mathGames[i]}");
+                        //     }
+                        // }
+                        // Console.WriteLine();
+                        mathGame = CalculatorLibrary.Calculator.DisplayLatestMathCalculations(mathCalculations, mathGames);
                         // DeleteLatestMathCalculations();
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
