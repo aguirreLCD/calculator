@@ -489,4 +489,23 @@ $RECYCLE.BIN/
 .vscode/launch.json 
 .vscode/extensions.json
 
+
+.vscode/settings.json
+.vscode/tasks.json 
+
+*vscode/launch.json 
+*vscode/extensions.json
+*.vscode
+*.vscode/
+*/bin
+*/obj
+
+*.csproj
+*.sln
+
 ../.DS_Store
+DS_Store
+/.DS_Store
+*DS_Store
+
+
