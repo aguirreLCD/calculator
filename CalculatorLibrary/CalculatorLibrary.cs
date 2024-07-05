@@ -2,16 +2,20 @@
 {
     public class Calculator
     {
+
         // methods to handle calculations work
-        public static double MakeSum(double firstNumber, double secondNumber, double total)
+        public static double MakeSum(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames)
         {
             // rounds--;
             // counter++;
+            double total = 0;
+            string mathGame = "";
+
 
             total = firstNumber + secondNumber;
 
-            // mathGame = string.Format($"{firstNumber} + {secondNumber} = {total}");
-            // mathGames[counter] = mathGame;
+            mathGame = string.Format($"{firstNumber} + {secondNumber} = {total}");
+            mathGames[mathCalculations] = mathGame;
 
             Console.WriteLine($"{firstNumber} + {secondNumber} = {total}");
 
@@ -19,20 +23,38 @@
             // correctAnswerForSum++;
 
             // scores[0, 1] = correctAnswerForSum;
+
+            Console.WriteLine();
+            Console.WriteLine($"You have done {mathCalculations} Calculations");
+            Console.WriteLine();
+            Console.WriteLine("Previus Math Calculations:");
+            Console.WriteLine();
+
+            for (int i = 0; i < mathGames.Length; i++)
+            {
+                if (mathGames[i] != null)
+                {
+                    Console.WriteLine();
+                    Console.Write($"\t{mathGames[i]}");
+                }
+            }
+
             Console.WriteLine();
 
             return total;
         }
 
-        public static double MakeSubtraction(double firstNumber, double secondNumber, double total)
+        public static double MakeSubtraction(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames)
         {
             // rounds--;
             // counter++;
+            double total = 0;
+            string mathGame = "";
 
             total = firstNumber - secondNumber;
 
-            // mathGame = string.Format($"{firstNumber} - {secondNumber} = {total}");
-            // mathGames[counter] = mathGame;
+            mathGame = string.Format($"{firstNumber} - {secondNumber} = {total}");
+            mathGames[mathCalculations] = mathGame;
 
             Console.WriteLine($"{firstNumber} - {secondNumber} = {total}");
 
@@ -40,20 +62,38 @@
             // correctAnswerForSubtraction++;
 
             // scores[1, 1] = correctAnswerForSubtraction;
+
+            Console.WriteLine();
+            Console.WriteLine($"You have done {mathCalculations} Calculations");
+            Console.WriteLine();
+            Console.WriteLine("Previus Math Calculations:");
+            Console.WriteLine();
+
+            for (int i = 0; i < mathGames.Length; i++)
+            {
+                if (mathGames[i] != null)
+                {
+                    Console.WriteLine();
+                    Console.Write($"\t{mathGames[i]}");
+                }
+            }
             Console.WriteLine();
 
             return total;
 
         }
 
-        public static double MakeMultiplication(double firstNumber, double secondNumber, double total)
+        public static double MakeMultiplication(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames)
         {
             // rounds--;
             // counter++;
+            double total = 0;
+            string mathGame = "";
 
             total = firstNumber * secondNumber;
-            // mathGame = string.Format($"{firstNumber} * {secondNumber} = {total}");
-            // mathGames[counter] = mathGame;
+
+            mathGame = string.Format($"{firstNumber} * {secondNumber} = {total}");
+            mathGames[mathCalculations] = mathGame;
 
             Console.WriteLine($"{firstNumber} * {secondNumber} = {total}");
 
@@ -61,6 +101,21 @@
             // correctAnswerForMultiplication++;
 
             // scores[2, 1] = correctAnswerForMultiplication;
+
+            Console.WriteLine();
+            Console.WriteLine($"You have done {mathCalculations} Calculations");
+            Console.WriteLine();
+            Console.WriteLine("Previus Math Calculations:");
+            Console.WriteLine();
+
+            for (int i = 0; i < mathGames.Length; i++)
+            {
+                if (mathGames[i] != null)
+                {
+                    Console.WriteLine();
+                    Console.Write($"\t{mathGames[i]}");
+                }
+            }
             Console.WriteLine();
             return total;
 
