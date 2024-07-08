@@ -2,7 +2,6 @@
 {
     public class Calculator
     {
-
         // methods to handle calculations work
         public static void MakeSum(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames)
         {
@@ -75,7 +74,6 @@
 
         public static void EvenOrOdd(double firstNumber)
         {
-
             if (firstNumber % 2 == 0)
             {
                 Console.WriteLine($"{firstNumber} is an even number");
@@ -102,81 +100,11 @@
                     Console.Write($"\t{mathGames[i]}");
                 }
             }
+            // return mathGames;
         }
 
-        // public static int DeleteLatestMathCalculations(int mathCalculations, string[] mathGames, int[,] scores, string[] mathOperations)
-        // {
 
-        //     // TODO: Ask only if array is not null
-        //     Console.Write($"Do you want to delete some or all calculations? y or n?");
-
-        //     if (Console.ReadLine() == "y")
-        //     {
-        //         Console.Write("Press 'd' to delete all the calculations ");
-        //         Console.Write("Or press any other key and Enter to delete only specifics calculations: ");
-
-        //         if (Console.ReadLine() == "d")
-        //         {
-
-        //             for (int j = 0; j < scores.Length / 2; j++)
-        //             {
-        //                 Console.WriteLine();
-        //                 scores.SetValue(null, j, 1);
-        //                 Console.Write($"\t{scores[j, 1]}\n");
-
-        //             }
-
-        //             for (int i = 0; i < mathGames.Length; i++)
-        //             {
-        //                 if (mathGames[i] != null)
-        //                 {
-        //                     // "delete" the array
-        //                     mathGames.SetValue(null, i);
-        //                     mathCalculations--;
-        //                 }
-        //             }
-        //         }
-
-
-        //         for (int i = 0; i < mathGames.Length; i++)
-        //         {
-        //             if (mathGames[i] != null)
-        //             {
-        //                 // Wait for the user to respond before closing.
-        //                 Console.Write($"Press 'x' to delete the {mathGames[i]} calculation, or press any other key and Enter to continue: ");
-
-        //                 if (Console.ReadLine() == "x")
-        //                 {
-        //                     // "delete" the item 
-        //                     mathGames.SetValue(null, i);
-        //                     mathCalculations--;
-        //                     Console.WriteLine(i);
-
-        //                     // Console.WriteLine($"score {scores[i, 1]}");
-        //                     // scores.SetValue(scores[i, 1] - 1, i, 1);
-        //                     // Console.WriteLine($"score {scores[i, 1]}");
-
-        //                     // for (int j = 0; j < scores.Length / 2; j++)
-        //                     // {
-        //                     //     Console.WriteLine();
-        //                     //     scores.SetValue(scores[j, 1] - 1, j, 1);
-        //                     //     Console.Write($"\t{scores[j, 1]}\n");
-
-        //                     // }
-
-        //                 }
-
-
-        //             }
-        //         }
-        //     }
-        //     Console.WriteLine("\n"); // Friendly linespacing.
-
-        //     return mathCalculations;
-        // }
-
-
-        public static void DisplayTotalMathCalculations(int mathCalculations, int[,] scores, string[] mathOperations, int answerForSum, int answerForSubtraction, int answerForMultiplication, int answerForDivision, int answerForSquare)
+        public static void DisplayTotalMathCalculations(int mathCalculations, int[,] scores, string[] mathOperations)
         {
             Console.WriteLine($"Total Math Calculations:\t\t{mathCalculations}");
             Console.WriteLine();
@@ -189,13 +117,53 @@
 
             }
 
-            // Console.WriteLine($"\tTotal for Addition:\t\t{answerForSum}");
-            // Console.WriteLine($"\tTotal for Subtraction:\t\t{answerForSubtraction}");
-            // Console.WriteLine($"\tTotal for Multiplication:\t{answerForMultiplication}");
-            // Console.WriteLine($"\tTotal for Division:\t\t{answerForDivision}");
-            // Console.WriteLine($"\tTotal for SquareRoot:\t\t{answerForSquare}");
-
+            // return mathOperations;
         }
+
+        public static string[] DeleteLatestMathCalculations(int mathCalculations, string[] mathGames, int[,] scores)
+        {
+            // TODO: Ask only if array is not null
+            Console.Write($"Do you want to delete some or all calculations? y or n?");
+
+            if (Console.ReadLine() == "y")
+            {
+                Console.Write("Press 'd' to delete all the calculations ");
+                Console.Write("Or press any other key and Enter to delete only specifics calculations: ");
+
+                if (Console.ReadLine() == "d")
+                {
+                    for (int i = 0; i < mathGames.Length; i++)
+                    {
+                        if (mathGames[i] != null)
+                        {
+                            // "delete" the array
+                            mathGames.SetValue(null, i);
+                            mathCalculations--;
+                        }
+                    }
+                }
+
+                for (int i = 0; i < mathGames.Length; i++)
+                {
+                    if (mathGames[i] != null)
+                    {
+                        // Wait for the user to respond before closing.
+                        Console.Write($"Press 'x' to delete the {mathGames[i]} calculation, or press any other key and Enter to continue: ");
+
+                        if (Console.ReadLine() == "x")
+                        {
+                            // "delete" the item 
+                            mathGames.SetValue(null, i);
+                            mathCalculations--;
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("\n"); // Friendly linespacing.
+            return mathGames;
+        }
+
+
 
         // public static int DeleteScoresMathCalculations(int mathCalculations, string[] mathGames, int[,] scores, string[] mathOperations)
         // {

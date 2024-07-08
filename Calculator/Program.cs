@@ -181,10 +181,6 @@ namespace CalculatorProgram
                         answerForSum++;
                         scores[0, 1] = answerForSum;
 
-                        Console.WriteLine($"{scores[0, 1]}");
-                        Console.WriteLine($"{mathCalculations}");
-                        Console.WriteLine($"{answerForSum}");
-
                         CalculatorLibrary.Calculator.MakeSum(firstNumber, secondNumber, mathCalculations, mathGames);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -198,10 +194,7 @@ namespace CalculatorProgram
                         answerForSubtraction++;
                         scores[1, 1] = answerForSubtraction;
 
-                        Console.WriteLine($"{scores[1, 1]}");
-                        Console.WriteLine($"{mathCalculations}");
-                        Console.WriteLine($"{answerForSubtraction}");
-
+                      
                         CalculatorLibrary.Calculator.MakeSubtraction(firstNumber, secondNumber, mathCalculations, mathGames);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -260,7 +253,7 @@ namespace CalculatorProgram
                         break;
 
                     case "7": // Display Total Math Calculations
-                        CalculatorLibrary.Calculator.DisplayTotalMathCalculations(mathCalculations, scores, mathOperations, answerForSum, answerForSubtraction, answerForMultiplication, answerForDivision, answerForSquare);
+                        CalculatorLibrary.Calculator.DisplayTotalMathCalculations(mathCalculations, scores, mathOperations);
 
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -274,13 +267,13 @@ namespace CalculatorProgram
                         readResult = Console.ReadLine();
                         break;
 
-                        // case "9": // Delete Latest Math Calculations
-                        //           // TODO: Delete from scores
-                        //     mathCalculations = CalculatorLibrary.Calculator.DeleteLatestMathCalculations(mathCalculations, mathGames, scores, mathOperations);
+                    case "9": // Delete Latest Math Calculations
+                              // TODO: Delete from scores
+                        mathGames = CalculatorLibrary.Calculator.DeleteLatestMathCalculations(mathCalculations, mathGames, scores);
 
-                        //     Console.WriteLine("\n\rPress the Enter key to continue.");
-                        //     readResult = Console.ReadLine();
-                        //     break;
+                        Console.WriteLine("\n\rPress the Enter key to continue.");
+                        readResult = Console.ReadLine();
+                        break;
                 }
             }
         }
