@@ -21,7 +21,7 @@ namespace CalculatorProgram
 
             string? readResult = "";
             string menuSelection = "";
-            string mathGame = "";
+            // string mathGame = "";
 
             int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
             string[] mathOperations = new string[] { "Addition", "Subtraction", "Multiplication", "Division", "Square2d" };
@@ -58,7 +58,7 @@ namespace CalculatorProgram
                 Console.WriteLine();
 
                 readResult = Console.ReadLine();
-                var acceptableMenuOption = "1 2 3 4 5 6 7 8".Split();
+                var acceptableMenuOption = "0 1 2 3 4 5 6 7 8 9".Split();
 
                 if (readResult != null)
                 {
@@ -141,7 +141,7 @@ namespace CalculatorProgram
                             }
                         }
                     }
-                    else if (menuSelection != "7" && menuSelection != "8") // Addition, Subtraction, Multiplication
+                    else if (menuSelection != "7" && menuSelection != "8" && menuSelection != "9" && menuSelection != "0") // Addition, Subtraction, Multiplication
                     {
                         // Ask the user to type the first number.
                         Console.WriteLine("Type a number, and then press Enter:");
@@ -167,13 +167,25 @@ namespace CalculatorProgram
                 // handles user interface
                 switch (menuSelection)
                 {
+                    // case "0": // Delete Scores Math Calculations
+                    //     mathCalculations = CalculatorLibrary.Calculator.DeleteScoresMathCalculations(mathCalculations, mathGames, scores, mathOperations);
+
+                    //     Console.WriteLine("\n\rPress the Enter key to continue.");
+                    //     readResult = Console.ReadLine();
+                    //     break;
+
                     case "1": // Addition
                         Console.WriteLine("Addition");
 
                         mathCalculations++;
                         answerForSum++;
+                        scores[0, 1] = answerForSum;
 
-                        total = CalculatorLibrary.Calculator.MakeSum(firstNumber, secondNumber, mathCalculations, mathGames, answerForSum, scores);
+                        Console.WriteLine($"{scores[0, 1]}");
+                        Console.WriteLine($"{mathCalculations}");
+                        Console.WriteLine($"{answerForSum}");
+
+                        CalculatorLibrary.Calculator.MakeSum(firstNumber, secondNumber, mathCalculations, mathGames);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -184,8 +196,13 @@ namespace CalculatorProgram
 
                         mathCalculations++;
                         answerForSubtraction++;
+                        scores[1, 1] = answerForSubtraction;
 
-                        total = CalculatorLibrary.Calculator.MakeSubtraction(firstNumber, secondNumber, mathCalculations, mathGames, answerForSubtraction, scores);
+                        Console.WriteLine($"{scores[1, 1]}");
+                        Console.WriteLine($"{mathCalculations}");
+                        Console.WriteLine($"{answerForSubtraction}");
+
+                        CalculatorLibrary.Calculator.MakeSubtraction(firstNumber, secondNumber, mathCalculations, mathGames);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -196,8 +213,9 @@ namespace CalculatorProgram
 
                         mathCalculations++;
                         answerForMultiplication++;
+                        scores[2, 1] = answerForMultiplication;
 
-                        total = CalculatorLibrary.Calculator.MakeMultiplication(firstNumber, secondNumber, mathCalculations, mathGames, answerForMultiplication, scores);
+                        CalculatorLibrary.Calculator.MakeMultiplication(firstNumber, secondNumber, mathCalculations, mathGames);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -208,8 +226,9 @@ namespace CalculatorProgram
 
                         mathCalculations++;
                         answerForDivision++;
+                        scores[3, 1] = answerForDivision;
 
-                        total = CalculatorLibrary.Calculator.MakeDivisionForIntegers(firstNumber, secondNumber, mathCalculations, mathGames, answerForDivision, scores);
+                        CalculatorLibrary.Calculator.MakeDivisionForIntegers(firstNumber, secondNumber, mathCalculations, mathGames);
 
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -221,8 +240,9 @@ namespace CalculatorProgram
 
                         mathCalculations++;
                         answerForSquare++;
+                        scores[4, 1] = answerForSquare;
 
-                        total = CalculatorLibrary.Calculator.MakeSquare(firstNumber, mathCalculations, mathGames, answerForSquare, scores);
+                        CalculatorLibrary.Calculator.MakeSquare(firstNumber, mathCalculations, mathGames);
 
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -232,22 +252,15 @@ namespace CalculatorProgram
                     case "6": // Even or Odd
                         Console.WriteLine("Even or Odd");
 
-                        total = CalculatorLibrary.Calculator.EvenOrOdd(firstNumber);
+                        CalculatorLibrary.Calculator.EvenOrOdd(firstNumber);
 
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
                         break;
 
-                    case "7": // Total Math Calculations
-                        Console.WriteLine($"Total Math Calculations:\t\t{mathCalculations}");
-                        Console.WriteLine();
-
-                        Console.WriteLine($"\tTotal for Addition:\t\t{answerForSum}");
-                        Console.WriteLine($"\tTotal for Subtraction:\t\t{answerForSubtraction}");
-                        Console.WriteLine($"\tTotal for Multiplication:\t{answerForMultiplication}");
-                        Console.WriteLine($"\tTotal for Division:\t\t{answerForDivision}");
-                        Console.WriteLine($"\tTotal for SquareRoot:\t\t{answerForSquare}");
+                    case "7": // Display Total Math Calculations
+                        CalculatorLibrary.Calculator.DisplayTotalMathCalculations(mathCalculations, scores, mathOperations, answerForSum, answerForSubtraction, answerForMultiplication, answerForDivision, answerForSquare);
 
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -255,11 +268,19 @@ namespace CalculatorProgram
                         break;
 
                     case "8": // Display Latest Math Calculations
-                        mathGame = CalculatorLibrary.Calculator.DisplayLatestMathCalculations(mathCalculations, mathGames);
+                        CalculatorLibrary.Calculator.DisplayLatestMathCalculations(mathCalculations, mathGames);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
                         break;
+
+                        // case "9": // Delete Latest Math Calculations
+                        //           // TODO: Delete from scores
+                        //     mathCalculations = CalculatorLibrary.Calculator.DeleteLatestMathCalculations(mathCalculations, mathGames, scores, mathOperations);
+
+                        //     Console.WriteLine("\n\rPress the Enter key to continue.");
+                        //     readResult = Console.ReadLine();
+                        //     break;
                 }
             }
         }
