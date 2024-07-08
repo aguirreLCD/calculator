@@ -1,7 +1,4 @@
 ﻿
-using System.Text.RegularExpressions;
-
-// To resolve the ambiguity, rename the namespace from Calculator to CalculatorProgram in Program.cs.
 namespace CalculatorProgram
 {
     public class Program
@@ -10,7 +7,10 @@ namespace CalculatorProgram
         {
             string? firstNumberInput = "";
             string? secondNumberInput = "";
+            double firstNumber = 0;
+            double secondNumber = 0;
 
+            int mathCalculations = 0;
             double total = 0;
 
             int answerForSum = 0;
@@ -27,10 +27,6 @@ namespace CalculatorProgram
             string[] mathOperations = new string[] { "Addition", "Subtraction", "Multiplication", "Division", "Square2d" };
             string[] mathGames = new string[33];
 
-            int mathCalculations = 0;
-
-            double firstNumber = 0;
-            double secondNumber = 0;
 
             // handles user interface and error-handling work
             while (menuSelection != "exit")
@@ -62,7 +58,6 @@ namespace CalculatorProgram
                 Console.WriteLine();
 
                 readResult = Console.ReadLine();
-
                 var acceptableMenuOption = "1 2 3 4 5 6 7 8".Split();
 
                 if (readResult != null)
@@ -75,7 +70,7 @@ namespace CalculatorProgram
                         readResult = Console.ReadLine();
                     }
 
-                    // validate for input string - 
+                    // validate for input string
                     while (!double.TryParse(readResult, out firstNumber))
                     {
                         Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
@@ -84,8 +79,8 @@ namespace CalculatorProgram
 
                     menuSelection = readResult.ToLower();
 
-
-                    if (menuSelection == "6")
+                    // TODO: make a method that asks the user for a number - and just repeats the question if they don't enter a number 
+                    if (menuSelection == "6") // Even or Odd
                     {
                         // Ask the user to type the first number.
                         Console.WriteLine("Type a number to check if is even or odd, and then press Enter:");
@@ -94,11 +89,11 @@ namespace CalculatorProgram
                         // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
                         while (!double.TryParse(firstNumberInput, out firstNumber))
                         {
-                            Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                            Console.WriteLine("This is not a valid input. Please enter a valid number and then press Enter:");
                             firstNumberInput = Console.ReadLine();
                         }
                     }
-                    else if (menuSelection == "5")
+                    else if (menuSelection == "5") // Square Root
                     {
                         Console.WriteLine("Square Root");
 
@@ -109,14 +104,14 @@ namespace CalculatorProgram
                         // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
                         while (!double.TryParse(firstNumberInput, out firstNumber))
                         {
-                            Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                            Console.WriteLine("This is not a valid input. Please enter a valid number and then press Enter:");
                             firstNumberInput = Console.ReadLine();
                         }
                     }
-                    else if (menuSelection == "4")
+                    else if (menuSelection == "4") // Division
                     {
                         // Ask the user to type the first number.
-                        Console.WriteLine("Type a number, and then press Enter:");
+                        Console.WriteLine("Type the Dividend, and then press Enter:");
                         firstNumberInput = Console.ReadLine();
 
                         // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
@@ -125,29 +120,28 @@ namespace CalculatorProgram
                             Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
                             firstNumberInput = Console.ReadLine();
                         }
-
                         // Ask the user to type the second number.
-                        Console.WriteLine("Type another number, and then press Enter:");
+                        Console.WriteLine("Type the Divisor, and then press Enter:");
                         secondNumberInput = Console.ReadLine();
 
                         while (!double.TryParse(secondNumberInput, out secondNumber))
                         {
-                            Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                            Console.WriteLine("This is not a valid input. Please enter a valid divisor number and then press Enter:");
                             secondNumberInput = Console.ReadLine();
                         }
                         while (secondNumber == 0)
                         {
-                            Console.WriteLine("Number mustn't be zero. Type another number, and then press Enter:");
+                            Console.WriteLine("Divisor mustn't be zero. Type another number, and then press Enter:");
                             secondNumberInput = Console.ReadLine();
 
                             while (!double.TryParse(secondNumberInput, out secondNumber))
                             {
-                                Console.WriteLine("This is not a valid input. Please enter a 1number and then press Enter:");
+                                Console.WriteLine("This is not a valid input. Please enter a valid divisor number and then press Enter:");
                                 secondNumberInput = Console.ReadLine();
                             }
                         }
                     }
-                    else if (menuSelection != "7" && menuSelection != "8")
+                    else if (menuSelection != "7" && menuSelection != "8") // Addition, Subtraction, Multiplication
                     {
                         // Ask the user to type the first number.
                         Console.WriteLine("Type a number, and then press Enter:");
@@ -156,26 +150,24 @@ namespace CalculatorProgram
                         // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
                         while (!double.TryParse(firstNumberInput, out firstNumber))
                         {
-                            Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                            Console.WriteLine("This is not a valid input. Please enter a valid number and then press Enter:");
                             firstNumberInput = Console.ReadLine();
                         }
-
                         // Ask the user to type the second number.
                         Console.WriteLine("Type another number, and then press Enter:");
                         secondNumberInput = Console.ReadLine();
 
                         while (!double.TryParse(secondNumberInput, out secondNumber))
                         {
-                            Console.WriteLine("This is not a valid input. Please enter a 1number and then press Enter:");
+                            Console.WriteLine("This is not a valid input. Please enter a valid number and then press Enter:");
                             secondNumberInput = Console.ReadLine();
                         }
                     }
-
                 }
                 // handles user interface
                 switch (menuSelection)
                 {
-                    case "1":
+                    case "1": // Addition
                         Console.WriteLine("Addition");
 
                         mathCalculations++;
@@ -187,7 +179,7 @@ namespace CalculatorProgram
                         readResult = Console.ReadLine();
                         break;
 
-                    case "2":
+                    case "2": // Subtraction
                         Console.WriteLine("Subtraction");
 
                         mathCalculations++;
@@ -199,7 +191,7 @@ namespace CalculatorProgram
                         readResult = Console.ReadLine();
                         break;
 
-                    case "3":
+                    case "3": // Multiplication
                         Console.WriteLine("Multiplication");
 
                         mathCalculations++;
@@ -211,7 +203,7 @@ namespace CalculatorProgram
                         readResult = Console.ReadLine();
                         break;
 
-                    case "4":
+                    case "4": // Division
                         Console.WriteLine("Division");
 
                         mathCalculations++;
@@ -224,7 +216,7 @@ namespace CalculatorProgram
                         readResult = Console.ReadLine();
                         break;
 
-                    case "5":
+                    case "5": // Square Root
                         Console.WriteLine("Square Root");
 
                         mathCalculations++;
@@ -237,7 +229,7 @@ namespace CalculatorProgram
                         readResult = Console.ReadLine();
                         break;
 
-                    case "6":
+                    case "6": // Even or Odd
                         Console.WriteLine("Even or Odd");
 
                         total = CalculatorLibrary.Calculator.EvenOrOdd(firstNumber);
@@ -247,7 +239,7 @@ namespace CalculatorProgram
                         readResult = Console.ReadLine();
                         break;
 
-                    case "7":
+                    case "7": // Total Math Calculations
                         Console.WriteLine($"Total Math Calculations:\t\t{mathCalculations}");
                         Console.WriteLine();
 
@@ -262,9 +254,8 @@ namespace CalculatorProgram
                         readResult = Console.ReadLine();
                         break;
 
-                    case "8":
+                    case "8": // Display Latest Math Calculations
                         mathGame = CalculatorLibrary.Calculator.DisplayLatestMathCalculations(mathCalculations, mathGames);
-                        // DeleteLatestMathCalculations();
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();

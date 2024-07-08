@@ -61,7 +61,6 @@
             Console.WriteLine();
             return total;
         }
-
         public static double MakeDivisionForIntegers(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, int answerForDivision, int[,] scores)
         {
             double total = 0;
@@ -80,7 +79,6 @@
             Console.WriteLine();
             return total;
         }
-
         public static double MakeSquare(double firstNumber, int mathCalculations, string[] mathGames, int answerForSquare, int[,] scores)
         {
             double total = 0;
@@ -99,7 +97,6 @@
             Console.WriteLine();
             return total;
         }
-
         public static double EvenOrOdd(double firstNumber)
         {
             double total = 0;
