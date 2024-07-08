@@ -2,15 +2,12 @@
 {
     public class Calculator
     {
-
         // methods to handle calculations work
         public static double MakeSum(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, int answerForSum, int[,] scores)
         {
-            // rounds--;
-            // counter++;
+
             double total = 0;
             string mathGame = "";
-
 
             total = firstNumber + secondNumber;
 
@@ -19,34 +16,15 @@
 
             Console.WriteLine($"{firstNumber} + {secondNumber} = {total}");
 
-            // correctAnswer++;
             answerForSum++;
-
             scores[0, 1] = answerForSum;
-
-            // Console.WriteLine();
-            // Console.WriteLine($"You have done {mathCalculations} Calculations");
-            // Console.WriteLine();
-            // Console.WriteLine("Previus Math Calculations:");
-            // Console.WriteLine();
-
-            // for (int i = 0; i < mathGames.Length; i++)
-            // {
-            //     if (mathGames[i] != null)
-            //     {
-            //         Console.WriteLine();
-            //         Console.Write($"\t{mathGames[i]}");
-            //     }
-            // }
 
             Console.WriteLine();
             return total;
         }
-
         public static double MakeSubtraction(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, int answerForSubtraction, int[,] scores)
         {
-            // rounds--;
-            // counter++;
+
             double total = 0;
             string mathGame = "";
 
@@ -57,35 +35,16 @@
 
             Console.WriteLine($"{firstNumber} - {secondNumber} = {total}");
 
-            // correctAnswer++;
             answerForSubtraction++;
-
             scores[1, 1] = answerForSubtraction;
 
-            // Console.WriteLine();
-            // Console.WriteLine($"You have done {mathCalculations} Calculations");
-            // Console.WriteLine();
-            // Console.WriteLine("Previus Math Calculations:");
-            // Console.WriteLine();
-
-            // for (int i = 0; i < mathGames.Length; i++)
-            // {
-            //     if (mathGames[i] != null)
-            //     {
-            //         Console.WriteLine();
-            //         Console.Write($"\t{mathGames[i]}");
-            //     }
-            // }
             Console.WriteLine();
-
             return total;
 
         }
-
         public static double MakeMultiplication(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, int answerForMultiplication, int[,] scores)
         {
-            // rounds--;
-            // counter++;
+
             double total = 0;
             string mathGame = "";
 
@@ -99,123 +58,65 @@
             answerForMultiplication++;
             scores[2, 1] = answerForMultiplication;
 
-            // Console.WriteLine();
-            // Console.WriteLine($"You have done {mathCalculations} Calculations");
-            // Console.WriteLine();
-            // Console.WriteLine("Previus Math Calculations:");
-            // Console.WriteLine();
-
-            // for (int i = 0; i < mathGames.Length; i++)
-            // {
-            //     if (mathGames[i] != null)
-            //     {
-            //         Console.WriteLine();
-            //         Console.Write($"\t{mathGames[i]}");
-            //     }
-            // }
             Console.WriteLine();
             return total;
-
         }
 
-        // public static double MakeDivisionForDecimals(double firstNumber, double secondNumber, double total)
-        // {
-        //     while (secondNumber == 0)
-        //     {
-        //         Console.WriteLine("Number mustn't be zero. Type another number, and then press Enter:");
-        //         secondNumberInput = Console.ReadLine();
+        public static double MakeDivisionForIntegers(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, int answerForDivision, int[,] scores)
+        {
+            double total = 0;
+            string mathGame = "";
 
-        //         while (!double.TryParse(secondNumberInput, out secondNumber))
-        //         {
-        //             Console.WriteLine("This is not a valid input. Please enter a 1number and then press Enter:");
-        //             secondNumberInput = Console.ReadLine();
-        //         }
-        //     }
+            total = firstNumber / secondNumber;
 
-        //     // rounds--;
-        //     // counter++;
+            mathGame = string.Format($"{firstNumber} / {secondNumber} = {total}");
+            mathGames[mathCalculations] = mathGame;
 
-        //     total = firstNumber / secondNumber;
-        //     double totalRounded = Math.Round(total, 2);
+            Console.WriteLine($"{firstNumber} / {secondNumber} = {total}");
 
-        //     // mathGame = string.Format($"{firstNumber} / {secondNumber} = {totalRounded}");
-        //     // mathGames[counter] = mathGame;
+            answerForDivision++;
+            scores[3, 1] = answerForDivision;
 
-        //     Console.WriteLine($"{firstNumber} / {secondNumber} = {totalRounded}");
+            Console.WriteLine();
+            return total;
+        }
 
-        //     // correctAnswer++;
-        //     // correctAnswerForDivision++;
+        public static double MakeSquare(double firstNumber, int mathCalculations, string[] mathGames, int answerForSquare, int[,] scores)
+        {
+            double total = 0;
+            string mathGame = "";
 
-        //     // scores[3, 1] = correctAnswerForDivision;
-        //     Console.WriteLine();
-        //     return total;
+            total = firstNumber * firstNumber;
 
-        // }
+            mathGame = string.Format($"{firstNumber} * {firstNumber} = {total}");
+            mathGames[mathCalculations] = mathGame;
 
-        // public void MakeDivisionForIntegers(double firstNumber, double secondNumber)
-        // {
-        //     while (secondNumber == 0)
-        //     {
-        //         Console.WriteLine("Number mustn't be zero. Type another number, and then press Enter:");
-        //         secondNumberInput = Console.ReadLine();
+            Console.WriteLine($"{firstNumber} * {firstNumber} = {total}");
 
-        //         while (!double.TryParse(secondNumberInput, out secondNumber))
-        //         {
-        //             Console.WriteLine("This is not a valid input. Please enter a 1number and then press Enter:");
-        //             secondNumberInput = Console.ReadLine();
-        //         }
-        //     }
+            answerForSquare++;
+            scores[4, 1] = answerForSquare;
 
-        //     rounds--;
-        //     counter++;
+            Console.WriteLine();
+            return total;
+        }
 
-        //     total = firstNumber / secondNumber;
+        public static double EvenOrOdd(double firstNumber)
+        {
+            double total = 0;
 
-        //     mathGame = string.Format($"{firstNumber} / {secondNumber} = {total}");
-        //     mathGames[counter] = mathGame;
-
-        //     Console.WriteLine($"{firstNumber} / {secondNumber} = {total}");
-
-        //     correctAnswer++;
-        //     correctAnswerForDivision++;
-
-        //     scores[3, 1] = correctAnswerForDivision;
-        //     Console.WriteLine();
-        // }
-
-        // public void MakeSquare(double firstNumber)
-        // {
-        //     rounds--;
-        //     counter++;
-
-        //     total = firstNumber * firstNumber;
-
-        //     mathGame = string.Format($"{firstNumber} * {firstNumber} = {total}");
-        //     mathGames[counter] = mathGame;
-
-        //     Console.WriteLine($"{firstNumber} * {firstNumber} = {total}");
-        //     correctAnswer++;
-        //     correctAnswerForSquare++;
-
-        //     scores[4, 1] = correctAnswerForSquare;
-        //     Console.WriteLine();
-        // }
-
-        // public void evenOrOdd(double firstNumber)
-        // {
-        //     if (firstNumber % 2 == 0)
-        //     {
-        //         Console.WriteLine($"{firstNumber} is an even number");
-        //     }
-        //     else
-        //     {
-        //         Console.WriteLine($"{firstNumber} is an odd number");
-        //     }
-        // }
+            if (firstNumber % 2 == 0)
+            {
+                Console.WriteLine($"{firstNumber} is an even number");
+            }
+            else
+            {
+                Console.WriteLine($"{firstNumber} is an odd number");
+            }
+            return total;
+        }
 
         public static string DisplayLatestMathCalculations(int mathCalculations, string[] mathGames)
         {
-
             string mathGame = "";
             Console.WriteLine();
             Console.WriteLine($"You have done {mathCalculations} Calculations");
@@ -233,7 +134,6 @@
             }
             return mathGame;
         }
-
 
         // public void DeleteLatestMathCalculations()
         // {

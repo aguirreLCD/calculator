@@ -18,8 +18,8 @@ namespace CalculatorProgram
             int answerForSum = 0;
             int answerForSubtraction = 0;
             int answerForMultiplication = 0;
-            int correctAnswerForDivision = 0;
-            int correctAnswerForSquare = 0;
+            int answerForDivision = 0;
+            int answerForSquare = 0;
 
             string? readResult = "";
             string menuSelection = "";
@@ -29,8 +29,7 @@ namespace CalculatorProgram
             string[] mathOperations = new string[] { "Addition", "Subtraction", "Multiplication", "Division", "Square2d" };
             string[] mathGames = new string[33];
 
-            int counter = 0;
-            int rounds = 0;
+
             int mathCalculations = 0;
 
             double firstNumber = 0;
@@ -47,16 +46,17 @@ namespace CalculatorProgram
                 // Ask the user to choose an operation.
                 Console.WriteLine("Your main menu options are:");
                 Console.WriteLine("------------------------\n");
-                Console.WriteLine("1. To calculate the Addition of two integers, type: 1");
-                Console.WriteLine("2. To calculate the Subtraction of two integers, type: 2");
-                Console.WriteLine("3. To calculate the Multiplication of two integers, type: 3");
-                Console.WriteLine("4. To calculate the Division of two decimals (2 digits rounded), type: 4");
-                Console.WriteLine("5. To calculate the Division of two integers, type: 5");
-                Console.WriteLine("6. To calculate the Square Root of one integer, type: 6");
-                Console.WriteLine("7. To check if one integer is Even or Odd, type: 7");
 
-                Console.WriteLine("8. To display the total Math Calculations by operation, type: 8");
-                Console.WriteLine("9. To display the previous Math Calculations, type: 9");
+                Console.WriteLine("1. To calculate the Addition, type: 1");
+                Console.WriteLine("2. To calculate the Subtraction, type: 2");
+                Console.WriteLine("3. To calculate the Multiplication, type: 3");
+                Console.WriteLine("4. To calculate the Division, type: 4");
+
+                Console.WriteLine("5. To calculate the Square Root, type: 5");
+                Console.WriteLine("6. To check if one integer is Even or Odd, type: 6");
+
+                Console.WriteLine("7. To display the total Math Calculations by operation, type: 7");
+                Console.WriteLine("8. To display the previous Math Calculations, type: 8");
 
                 var currentDate = DateTime.Now;
                 Console.WriteLine($"{Environment.NewLine}Hello! on {currentDate:d} at {currentDate:t}");
@@ -64,7 +64,7 @@ namespace CalculatorProgram
                 Console.WriteLine("Enter your option (or type Exit to exit the program)");
                 Console.WriteLine();
 
-                Regex menuOptions = new Regex(@"[A-Z1-9]\d$");
+                Regex menuOptions = new Regex(@"[A-Z1-8]\d$");
 
                 readResult = Console.ReadLine();
 
@@ -85,7 +85,7 @@ namespace CalculatorProgram
                     // (Regex.IsMatch(menuSelection, @"[A-Z0-9]\d")))
                     if (!menuOptions.IsMatch(menuSelection) == true)
                     {
-                        if (menuSelection == "7")
+                        if (menuSelection == "6")
                         {
                             // Ask the user to type the first number.
                             Console.WriteLine("Type a number to check if is even or odd, and then press Enter:");
@@ -98,7 +98,7 @@ namespace CalculatorProgram
                                 firstNumberInput = Console.ReadLine();
                             }
                         }
-                        else if (menuSelection == "6")
+                        else if (menuSelection == "5")
                         {
                             Console.WriteLine("Square Root");
 
@@ -113,7 +113,41 @@ namespace CalculatorProgram
                                 firstNumberInput = Console.ReadLine();
                             }
                         }
-                        else if (menuSelection != "9" && menuSelection != "8")
+                        else if (menuSelection == "4")
+                        {
+                            // Ask the user to type the first number.
+                            Console.WriteLine("Type a number, and then press Enter:");
+                            firstNumberInput = Console.ReadLine();
+
+                            // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
+                            while (!double.TryParse(firstNumberInput, out firstNumber))
+                            {
+                                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                                firstNumberInput = Console.ReadLine();
+                            }
+
+                            // Ask the user to type the second number.
+                            Console.WriteLine("Type another number, and then press Enter:");
+                            secondNumberInput = Console.ReadLine();
+
+                            while (!double.TryParse(secondNumberInput, out secondNumber))
+                            {
+                                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                                secondNumberInput = Console.ReadLine();
+                            }
+                            while (secondNumber == 0)
+                            {
+                                Console.WriteLine("Number mustn't be zero. Type another number, and then press Enter:");
+                                secondNumberInput = Console.ReadLine();
+
+                                while (!double.TryParse(secondNumberInput, out secondNumber))
+                                {
+                                    Console.WriteLine("This is not a valid input. Please enter a 1number and then press Enter:");
+                                    secondNumberInput = Console.ReadLine();
+                                }
+                            }
+                        }
+                        else if (menuSelection != "7" && menuSelection != "8")
                         {
                             // Ask the user to type the first number.
                             Console.WriteLine("Type a number, and then press Enter:");
@@ -178,24 +212,25 @@ namespace CalculatorProgram
                         break;
 
                     case "4":
-                        Console.WriteLine("Divion for decimals");
+                        Console.WriteLine("Division");
 
                         mathCalculations++;
+                        answerForDivision++;
 
-                        // MakeDivisionForDecimals(firstNumber, secondNumber);
-                        // total = CalculatorLibrary.Calculator.MakeDivisionForDecimals(firstNumber, secondNumber, total);
+                        total = CalculatorLibrary.Calculator.MakeDivisionForIntegers(firstNumber, secondNumber, mathCalculations, mathGames, answerForDivision, scores);
 
+                        Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
                         break;
 
                     case "5":
-                        Console.WriteLine("Division for integers");
+                        Console.WriteLine("Square Root");
 
                         mathCalculations++;
+                        answerForSquare++;
 
-                        // MakeDivisionForIntegers(firstNumber, secondNumber);
-                        // total = CalculatorLibrary.Calculator.MakeDivisionForIntegers(firstNumber, secondNumber, total);
+                        total = CalculatorLibrary.Calculator.MakeSquare(firstNumber, mathCalculations, mathGames, answerForSquare, scores);
 
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -203,11 +238,9 @@ namespace CalculatorProgram
                         break;
 
                     case "6":
-                        Console.WriteLine("Square Root");
+                        Console.WriteLine("Even or Odd");
 
-                        mathCalculations++;
-
-                        // MakeSquare(firstNumber);
+                        total = CalculatorLibrary.Calculator.EvenOrOdd(firstNumber);
 
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -215,9 +248,14 @@ namespace CalculatorProgram
                         break;
 
                     case "7":
-                        Console.WriteLine("Even or Odd");
+                        Console.WriteLine($"Total Math Calculations:\t\t{mathCalculations}");
+                        Console.WriteLine();
 
-                        // evenOrOdd(firstNumber);
+                        Console.WriteLine($"\tTotal for Addition:\t\t{answerForSum}");
+                        Console.WriteLine($"\tTotal for Subtraction:\t\t{answerForSubtraction}");
+                        Console.WriteLine($"\tTotal for Multiplication:\t{answerForMultiplication}");
+                        Console.WriteLine($"\tTotal for Division:\t\t{answerForDivision}");
+                        Console.WriteLine($"\tTotal for SquareRoot:\t\t{answerForSquare}");
 
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -225,37 +263,6 @@ namespace CalculatorProgram
                         break;
 
                     case "8":
-                        Console.WriteLine($"Total Math Calculations:\t\t{mathCalculations}");
-                        Console.WriteLine();
-
-                        Console.WriteLine($"\tTotal for Addition:\t\t{answerForSum}");
-                        Console.WriteLine($"\tTotal for Subtraction:\t\t{answerForSubtraction}");
-                        Console.WriteLine($"\tTotal for Multiplication:\t{answerForMultiplication}");
-                        Console.WriteLine($"\tTotal for Division:\t\t{correctAnswerForDivision}");
-                        Console.WriteLine($"\tTotal for SquareRoot:\t\t{correctAnswerForSquare}");
-
-                        Console.WriteLine();
-                        Console.WriteLine("\n\rPress the Enter key to continue.");
-                        readResult = Console.ReadLine();
-                        break;
-
-                    case "9":
-
-                        // Console.WriteLine();
-                        // Console.WriteLine($"You have done {mathCalculations} Calculations");
-                        // Console.WriteLine();
-                        // Console.WriteLine("Previus Math Calculations:");
-                        // Console.WriteLine();
-
-                        // for (int i = 0; i < mathGames.Length; i++)
-                        // {
-                        //     if (mathGames[i] != null)
-                        //     {
-                        //         Console.WriteLine();
-                        //         Console.Write($"\t{mathGames[i]}");
-                        //     }
-                        // }
-                        // Console.WriteLine();
                         mathGame = CalculatorLibrary.Calculator.DisplayLatestMathCalculations(mathCalculations, mathGames);
                         // DeleteLatestMathCalculations();
 
