@@ -11,8 +11,6 @@ namespace CalculatorProgram
             string? firstNumberInput = "";
             string? secondNumberInput = "";
 
-            // int correctAnswer = 0;
-
             double total = 0;
 
             int answerForSum = 0;
@@ -28,7 +26,6 @@ namespace CalculatorProgram
             int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
             string[] mathOperations = new string[] { "Addition", "Subtraction", "Multiplication", "Division", "Square2d" };
             string[] mathGames = new string[33];
-
 
             int mathCalculations = 0;
 
@@ -64,15 +61,21 @@ namespace CalculatorProgram
                 Console.WriteLine("Enter your option (or type Exit to exit the program)");
                 Console.WriteLine();
 
-                Regex menuOptions = new Regex(@"[A-Z1-8]\d$");
-
                 readResult = Console.ReadLine();
 
-                // TODO: validate for option 0 
-                // || (readResult == "0") ---  && (readResult != "0")
+                var acceptableMenuOption = "1 2 3 4 5 6 7 8".Split();
+
                 if (readResult != null)
                 {
-                    // validate for input string
+                    // validate for menu options
+                    while (!acceptableMenuOption.Contains(readResult))
+                    {
+                        Console.WriteLine("Enter your option (or type Exit to exit the program)");
+                        Console.WriteLine();
+                        readResult = Console.ReadLine();
+                    }
+
+                    // validate for input string - 
                     while (!double.TryParse(readResult, out firstNumber))
                     {
                         Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
@@ -81,87 +84,60 @@ namespace CalculatorProgram
 
                     menuSelection = readResult.ToLower();
 
-                    // TODO: validate range of options from 0 to 9
-                    // (Regex.IsMatch(menuSelection, @"[A-Z0-9]\d")))
-                    if (!menuOptions.IsMatch(menuSelection) == true)
+
+                    if (menuSelection == "6")
                     {
-                        if (menuSelection == "6")
-                        {
-                            // Ask the user to type the first number.
-                            Console.WriteLine("Type a number to check if is even or odd, and then press Enter:");
-                            firstNumberInput = Console.ReadLine();
+                        // Ask the user to type the first number.
+                        Console.WriteLine("Type a number to check if is even or odd, and then press Enter:");
+                        firstNumberInput = Console.ReadLine();
 
-                            // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
-                            while (!double.TryParse(firstNumberInput, out firstNumber))
-                            {
-                                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-                                firstNumberInput = Console.ReadLine();
-                            }
+                        // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
+                        while (!double.TryParse(firstNumberInput, out firstNumber))
+                        {
+                            Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                            firstNumberInput = Console.ReadLine();
                         }
-                        else if (menuSelection == "5")
+                    }
+                    else if (menuSelection == "5")
+                    {
+                        Console.WriteLine("Square Root");
+
+                        // Ask the user to type the first number.
+                        Console.WriteLine("Type a number to Calculate the Square Root, and then press Enter:");
+                        firstNumberInput = Console.ReadLine();
+
+                        // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
+                        while (!double.TryParse(firstNumberInput, out firstNumber))
                         {
-                            Console.WriteLine("Square Root");
-
-                            // Ask the user to type the first number.
-                            Console.WriteLine("Type a number to Calculate the Square Root, and then press Enter:");
+                            Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
                             firstNumberInput = Console.ReadLine();
-
-                            // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
-                            while (!double.TryParse(firstNumberInput, out firstNumber))
-                            {
-                                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-                                firstNumberInput = Console.ReadLine();
-                            }
                         }
-                        else if (menuSelection == "4")
+                    }
+                    else if (menuSelection == "4")
+                    {
+                        // Ask the user to type the first number.
+                        Console.WriteLine("Type a number, and then press Enter:");
+                        firstNumberInput = Console.ReadLine();
+
+                        // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
+                        while (!double.TryParse(firstNumberInput, out firstNumber))
                         {
-                            // Ask the user to type the first number.
-                            Console.WriteLine("Type a number, and then press Enter:");
+                            Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
                             firstNumberInput = Console.ReadLine();
+                        }
 
-                            // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
-                            while (!double.TryParse(firstNumberInput, out firstNumber))
-                            {
-                                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-                                firstNumberInput = Console.ReadLine();
-                            }
+                        // Ask the user to type the second number.
+                        Console.WriteLine("Type another number, and then press Enter:");
+                        secondNumberInput = Console.ReadLine();
 
-                            // Ask the user to type the second number.
-                            Console.WriteLine("Type another number, and then press Enter:");
+                        while (!double.TryParse(secondNumberInput, out secondNumber))
+                        {
+                            Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
                             secondNumberInput = Console.ReadLine();
-
-                            while (!double.TryParse(secondNumberInput, out secondNumber))
-                            {
-                                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-                                secondNumberInput = Console.ReadLine();
-                            }
-                            while (secondNumber == 0)
-                            {
-                                Console.WriteLine("Number mustn't be zero. Type another number, and then press Enter:");
-                                secondNumberInput = Console.ReadLine();
-
-                                while (!double.TryParse(secondNumberInput, out secondNumber))
-                                {
-                                    Console.WriteLine("This is not a valid input. Please enter a 1number and then press Enter:");
-                                    secondNumberInput = Console.ReadLine();
-                                }
-                            }
                         }
-                        else if (menuSelection != "7" && menuSelection != "8")
+                        while (secondNumber == 0)
                         {
-                            // Ask the user to type the first number.
-                            Console.WriteLine("Type a number, and then press Enter:");
-                            firstNumberInput = Console.ReadLine();
-
-                            // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
-                            while (!double.TryParse(firstNumberInput, out firstNumber))
-                            {
-                                Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
-                                firstNumberInput = Console.ReadLine();
-                            }
-
-                            // Ask the user to type the second number.
-                            Console.WriteLine("Type another number, and then press Enter:");
+                            Console.WriteLine("Number mustn't be zero. Type another number, and then press Enter:");
                             secondNumberInput = Console.ReadLine();
 
                             while (!double.TryParse(secondNumberInput, out secondNumber))
@@ -171,6 +147,30 @@ namespace CalculatorProgram
                             }
                         }
                     }
+                    else if (menuSelection != "7" && menuSelection != "8")
+                    {
+                        // Ask the user to type the first number.
+                        Console.WriteLine("Type a number, and then press Enter:");
+                        firstNumberInput = Console.ReadLine();
+
+                        // Unhandled exception. System.FormatException: The input string 'a' was not in a correct format.
+                        while (!double.TryParse(firstNumberInput, out firstNumber))
+                        {
+                            Console.WriteLine("This is not a valid input. Please enter a number and then press Enter:");
+                            firstNumberInput = Console.ReadLine();
+                        }
+
+                        // Ask the user to type the second number.
+                        Console.WriteLine("Type another number, and then press Enter:");
+                        secondNumberInput = Console.ReadLine();
+
+                        while (!double.TryParse(secondNumberInput, out secondNumber))
+                        {
+                            Console.WriteLine("This is not a valid input. Please enter a 1number and then press Enter:");
+                            secondNumberInput = Console.ReadLine();
+                        }
+                    }
+
                 }
                 // handles user interface
                 switch (menuSelection)
@@ -271,14 +271,6 @@ namespace CalculatorProgram
                         break;
                 }
             }
-
-
         }
     }
 }
-
-// class to handle user interface
-
-// class to handle calculations
-// class Calculator
-//  
