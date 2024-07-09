@@ -1,4 +1,9 @@
-This is a project to learn how to create and run a .NET console application by using Visual Studio Code and the .NET CLI.
+This is a project to learn how to:
+
+- create and run a .NET console application by using Visual Studio Code and the .NET CLI.
+- manage multiple projects;
+- debug;
+- publish;
 
 # Using Visual Studio Code:
 
@@ -66,6 +71,17 @@ CalculatorLibrary
 - Select the Project to Add Reference to
 ```
 
+# Working on:
+
+- Delete function:
+- delete mathGames array || item;
+- delete score array || score operation;
+- improve this logic:
+  1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d
+  int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
+- Learning about return methods;
+-
+
 # Learning Topics:
 
 - .NET is a platform to develop and run applications;
@@ -83,16 +99,6 @@ CalculatorLibrary
   (logic error prevents the .NET runtime from running commands, then the program CRASHES)
 
 - Dependency is an object that another object depends on;
-
-# Working on:
-
-- Delete function:
-- delete mathGames array || item;
-- delete score array || score operation;
-- improve this logic:
-  1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d
-  int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
-- Learning about return methods;
 
 <!--
 

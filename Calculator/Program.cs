@@ -22,10 +22,16 @@ namespace CalculatorProgram
             string? readResult = "";
             string menuSelection = "";
             string mathGame = "";
+
             // 1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d
             int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
+
             string[] mathOperations = new string[] { "Addition", "Subtraction", "Multiplication", "Division", "Square2d" };
+
             string[] mathGames = new string[33];
+
+
+            int counter = 0;
 
 
             // handles user interface and error-handling work
@@ -177,11 +183,12 @@ namespace CalculatorProgram
                     case "1": // Addition
                         Console.WriteLine("Addition");
 
+                        counter++;
                         mathCalculations++;
                         answerForSum++;
                         scores[0, 1] = answerForSum;
 
-                        CalculatorLibrary.Calculator.MakeSum(firstNumber, secondNumber, mathCalculations, mathGames, total, mathGame);
+                        CalculatorLibrary.Calculator.MakeSum(counter, firstNumber, secondNumber, mathCalculations, mathGames, total, mathGame);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -189,13 +196,14 @@ namespace CalculatorProgram
 
                     case "2": // Subtraction
                         Console.WriteLine("Subtraction");
+                        counter++;
 
                         mathCalculations++;
                         answerForSubtraction++;
                         scores[1, 1] = answerForSubtraction;
 
 
-                        CalculatorLibrary.Calculator.MakeSubtraction(firstNumber, secondNumber, mathCalculations, mathGames, total, mathGame);
+                        CalculatorLibrary.Calculator.MakeSubtraction(counter, firstNumber, secondNumber, mathCalculations, mathGames, total, mathGame);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -204,11 +212,13 @@ namespace CalculatorProgram
                     case "3": // Multiplication
                         Console.WriteLine("Multiplication");
 
+                        counter++;
+
                         mathCalculations++;
                         answerForMultiplication++;
                         scores[2, 1] = answerForMultiplication;
 
-                        CalculatorLibrary.Calculator.MakeMultiplication(firstNumber, secondNumber, mathCalculations, mathGames);
+                        CalculatorLibrary.Calculator.MakeMultiplication(counter, firstNumber, secondNumber, mathCalculations, mathGames, total, mathGame);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -216,12 +226,13 @@ namespace CalculatorProgram
 
                     case "4": // Division
                         Console.WriteLine("Division");
+                        counter++;
 
                         mathCalculations++;
                         answerForDivision++;
                         scores[3, 1] = answerForDivision;
 
-                        CalculatorLibrary.Calculator.MakeDivisionForIntegers(firstNumber, secondNumber, mathCalculations, mathGames);
+                        CalculatorLibrary.Calculator.MakeDivisionForIntegers(counter, firstNumber, secondNumber, mathCalculations, mathGames, total, mathGame);
 
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -230,12 +241,13 @@ namespace CalculatorProgram
 
                     case "5": // Square Root
                         Console.WriteLine("Square Root");
+                        counter++;
 
                         mathCalculations++;
                         answerForSquare++;
                         scores[4, 1] = answerForSquare;
 
-                        CalculatorLibrary.Calculator.MakeSquare(firstNumber, mathCalculations, mathGames);
+                        CalculatorLibrary.Calculator.MakeSquare(counter, firstNumber, mathCalculations, mathGames, total, mathGame);
 
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -261,7 +273,7 @@ namespace CalculatorProgram
                         break;
 
                     case "8": // Display Latest Math Calculations
-                        CalculatorLibrary.Calculator.DisplayLatestMathCalculations(mathCalculations, mathGames);
+                        mathGames = CalculatorLibrary.Calculator.DisplayLatestMathCalculations(mathCalculations, mathGames);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -269,7 +281,7 @@ namespace CalculatorProgram
 
                     case "9": // Delete Latest Math Calculations
                               // TODO: Delete from scores
-                        mathGames = CalculatorLibrary.Calculator.DeleteLatestMathCalculations(mathCalculations, mathGames, scores);
+                        mathCalculations = CalculatorLibrary.Calculator.DeleteLatestMathCalculations(mathCalculations, mathGames, scores);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();

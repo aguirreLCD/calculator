@@ -3,66 +3,66 @@
     public class Calculator
     {
         // methods to handle calculations work
-        public static void MakeSum(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
+        public static void MakeSum(int counter, double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
         {
 
+            Console.WriteLine(counter);
+            // Console.WriteLine(mathCalculations);
 
             total = firstNumber + secondNumber;
 
             mathGame = string.Format($"{firstNumber} + {secondNumber} = {total}");
-            mathGames[mathCalculations] = mathGame;
+            mathGames[counter] = mathGame;
 
             Console.WriteLine($"{firstNumber} + {secondNumber} = {total}");
             Console.WriteLine();
         }
 
-        public static void MakeSubtraction(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
+        public static void MakeSubtraction(int counter, double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
         {
+            Console.WriteLine(counter);
+
             total = firstNumber - secondNumber;
 
             mathGame = string.Format($"{firstNumber} - {secondNumber} = {total}");
-            mathGames[mathCalculations] = mathGame;
+            mathGames[counter] = mathGame;
 
             Console.WriteLine($"{firstNumber} - {secondNumber} = {total}");
             Console.WriteLine();
         }
-        public static void MakeMultiplication(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames)
+        public static void MakeMultiplication(int counter, double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
         {
-            double total;
-            string mathGame;
+
+            Console.WriteLine(counter);
 
             total = firstNumber * secondNumber;
 
             mathGame = string.Format($"{firstNumber} * {secondNumber} = {total}");
-            mathGames[mathCalculations] = mathGame;
+            mathGames[counter] = mathGame;
 
             Console.WriteLine($"{firstNumber} * {secondNumber} = {total}");
             Console.WriteLine();
         }
 
-        public static void MakeDivisionForIntegers(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames)
+        public static void MakeDivisionForIntegers(int counter, double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
         {
-            double total;
-            string mathGame;
 
             total = firstNumber / secondNumber;
 
             mathGame = string.Format($"{firstNumber} / {secondNumber} = {total}");
-            mathGames[mathCalculations] = mathGame;
+            mathGames[counter] = mathGame;
 
             Console.WriteLine($"{firstNumber} / {secondNumber} = {total}");
             Console.WriteLine();
         }
 
-        public static void MakeSquare(double firstNumber, int mathCalculations, string[] mathGames)
+        public static void MakeSquare(int counter, double firstNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
         {
-            double total;
-            string mathGame;
 
             total = firstNumber * firstNumber;
 
             mathGame = string.Format($"{firstNumber} * {firstNumber} = {total}");
-            mathGames[mathCalculations] = mathGame;
+            mathGames[counter] = mathGame;
 
             Console.WriteLine($"{firstNumber} * {firstNumber} = {total}");
             Console.WriteLine();
@@ -80,7 +80,7 @@
             }
         }
 
-        public static void DisplayLatestMathCalculations(int mathCalculations, string[] mathGames)
+        public static string[] DisplayLatestMathCalculations(int mathCalculations, string[] mathGames)
         {
             Console.WriteLine();
             Console.WriteLine($"You have done {mathCalculations} Calculations");
@@ -92,11 +92,12 @@
             {
                 if (mathGames[i] != null)
                 {
-                    Console.WriteLine();
+
                     Console.Write($"\t{mathGames[i]}");
+                    Console.WriteLine();
                 }
             }
-            // return mathGames;
+            return mathGames;
         }
 
 
@@ -112,12 +113,12 @@
                 Console.Write($"\t{scores[i, 1]}\n");
 
             }
-
-            // return mathOperations;
+            // return scores;
         }
 
-        public static string[] DeleteLatestMathCalculations(int mathCalculations, string[] mathGames, int[,] scores)
+        public static int DeleteLatestMathCalculations(int mathCalculations, string[] mathGames, int[,] scores)
         {
+            bool operationToDelete = false;
             // TODO: Ask only if array is not null
             Console.Write($"Do you want to delete some or all calculations? y or n?");
 
@@ -149,42 +150,74 @@
                         if (Console.ReadLine() == "x")
                         {
                             // "delete" the item 
+                            Console.WriteLine(mathGames[i]);
+
                             mathGames.SetValue(null, i);
-                            // scores.SetValue(scores[i, 1] - 1, i, 1);
-
-
                             mathCalculations--;
-
-
-
+                            operationToDelete = true;
+                            Console.WriteLine(mathGames[i]);
+                            Console.WriteLine(i);
                         }
+
+
+
                     }
                 }
+
+                if (operationToDelete == true)
+                {
+                    for (int j = 0; j < scores.Length / 2; j++)
+                    {
+
+                        // "delete" the item 
+                        // mathCalculations = mathCalculations - scores[j, 1];
+                        // Console.WriteLine();
+                        scores.SetValue(scores[j, 1] - 1, j, 1);
+                        // Console.Write($"\t{scores[i, 1]}\n");
+                    }
+                }
+
             }
             Console.WriteLine("\n"); // Friendly linespacing.
-            return mathGames;
+            return mathCalculations;
         }
-
 
 
         public static int DeleteScoresMathCalculations(int mathCalculations, string[] mathGames, int[,] scores, string[] mathOperations)
         {
+            Console.WriteLine($"Total Math Calculations:\t\t{mathCalculations}");
+            Console.WriteLine();
 
             for (int i = 0; i < scores.Length / 2; i++)
             {
-                // Wait for the user to respond before closing.
-                Console.Write($"Press 'x' to delete the {scores[i, 1]}, or press any other key and Enter to continue: ");
-
-                if (Console.ReadLine() == "x")
-                {
-                    // "delete" the item 
-                    Console.WriteLine();
-                    Console.Write($"\t{mathOperations[i]}");
-                    scores.SetValue(scores[i, 1] - 1, i, 1);
-                    Console.Write($"\t{scores[i, 1]}\n");
-                }
-
+                Console.WriteLine();
+                Console.Write($"\t{mathOperations[i]}");
+                Console.Write($"\t{scores[i, 1]}\n");
             }
+
+            Console.Write($"Do you want to delete some operation? y or n?");
+
+            if (Console.ReadLine() == "y")
+            {
+                for (int i = 0; i < scores.Length / 2; i++)
+                {
+                    // Wait for the user to respond before closing.
+                    Console.Write($"Press 'x' to delete all the {mathOperations[i]} operations, or press any other key and Enter to continue: ");
+
+                    if (Console.ReadLine() == "x")
+                    {
+                        // "delete" the item 
+                        mathCalculations = mathCalculations - scores[i, 1];
+                        Console.WriteLine();
+                        Console.Write($"\t{mathOperations[i]}");
+                        scores.SetValue(0, i, 1);
+                        Console.Write($"\t{scores[i, 1]}\n");
+                    }
+                }
+            }
+
+
+
 
             return mathCalculations;
         }
