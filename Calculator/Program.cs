@@ -21,8 +21,8 @@ namespace CalculatorProgram
 
             string? readResult = "";
             string menuSelection = "";
-            // string mathGame = "";
-
+            string mathGame = "";
+            // 1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d
             int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
             string[] mathOperations = new string[] { "Addition", "Subtraction", "Multiplication", "Division", "Square2d" };
             string[] mathGames = new string[33];
@@ -167,12 +167,12 @@ namespace CalculatorProgram
                 // handles user interface
                 switch (menuSelection)
                 {
-                    // case "0": // Delete Scores Math Calculations
-                    //     mathCalculations = CalculatorLibrary.Calculator.DeleteScoresMathCalculations(mathCalculations, mathGames, scores, mathOperations);
+                    case "0": // Delete Scores Math Calculations
+                        mathCalculations = CalculatorLibrary.Calculator.DeleteScoresMathCalculations(mathCalculations, mathGames, scores, mathOperations);
 
-                    //     Console.WriteLine("\n\rPress the Enter key to continue.");
-                    //     readResult = Console.ReadLine();
-                    //     break;
+                        Console.WriteLine("\n\rPress the Enter key to continue.");
+                        readResult = Console.ReadLine();
+                        break;
 
                     case "1": // Addition
                         Console.WriteLine("Addition");
@@ -181,7 +181,7 @@ namespace CalculatorProgram
                         answerForSum++;
                         scores[0, 1] = answerForSum;
 
-                        CalculatorLibrary.Calculator.MakeSum(firstNumber, secondNumber, mathCalculations, mathGames);
+                        CalculatorLibrary.Calculator.MakeSum(firstNumber, secondNumber, mathCalculations, mathGames, total, mathGame);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -194,8 +194,8 @@ namespace CalculatorProgram
                         answerForSubtraction++;
                         scores[1, 1] = answerForSubtraction;
 
-                      
-                        CalculatorLibrary.Calculator.MakeSubtraction(firstNumber, secondNumber, mathCalculations, mathGames);
+
+                        CalculatorLibrary.Calculator.MakeSubtraction(firstNumber, secondNumber, mathCalculations, mathGames, total, mathGame);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();

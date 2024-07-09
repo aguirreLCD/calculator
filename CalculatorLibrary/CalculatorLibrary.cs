@@ -3,10 +3,9 @@
     public class Calculator
     {
         // methods to handle calculations work
-        public static void MakeSum(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames)
+        public static void MakeSum(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
         {
-            double total;
-            string mathGame;
+
 
             total = firstNumber + secondNumber;
 
@@ -17,11 +16,8 @@
             Console.WriteLine();
         }
 
-        public static void MakeSubtraction(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames)
+        public static void MakeSubtraction(double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
         {
-            double total;
-            string mathGame;
-
             total = firstNumber - secondNumber;
 
             mathGame = string.Format($"{firstNumber} - {secondNumber} = {total}");
@@ -154,7 +150,13 @@
                         {
                             // "delete" the item 
                             mathGames.SetValue(null, i);
+                            // scores.SetValue(scores[i, 1] - 1, i, 1);
+
+
                             mathCalculations--;
+
+
+
                         }
                     }
                 }
@@ -165,26 +167,26 @@
 
 
 
-        // public static int DeleteScoresMathCalculations(int mathCalculations, string[] mathGames, int[,] scores, string[] mathOperations)
-        // {
+        public static int DeleteScoresMathCalculations(int mathCalculations, string[] mathGames, int[,] scores, string[] mathOperations)
+        {
 
-        //     for (int i = 0; i < scores.Length / 2; i++)
-        //     {
-        //         // Wait for the user to respond before closing.
-        //         Console.Write($"Press 'x' to delete the {scores[i, 1]}, or press any other key and Enter to continue: ");
+            for (int i = 0; i < scores.Length / 2; i++)
+            {
+                // Wait for the user to respond before closing.
+                Console.Write($"Press 'x' to delete the {scores[i, 1]}, or press any other key and Enter to continue: ");
 
-        //         if (Console.ReadLine() == "x")
-        //         {
-        //             // "delete" the item 
-        //             Console.WriteLine();
-        //             Console.Write($"\t{mathOperations[i]}");
-        //             scores.SetValue(scores[i, 1] - 1, i, 1);
-        //             Console.Write($"\t{scores[i, 1]}\n");
-        //         }
+                if (Console.ReadLine() == "x")
+                {
+                    // "delete" the item 
+                    Console.WriteLine();
+                    Console.Write($"\t{mathOperations[i]}");
+                    scores.SetValue(scores[i, 1] - 1, i, 1);
+                    Console.Write($"\t{scores[i, 1]}\n");
+                }
 
-        //     }
+            }
 
-        //     return mathCalculations;
-        // }
+            return mathCalculations;
+        }
     }
 }
