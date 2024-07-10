@@ -76,37 +76,38 @@ CalculatorLibrary
 
 # Working on:
 
-- Delete function:
-- delete mathGames array || item;
-- delete score array || score operation;
-- improve this logic:
+[] - Delete function:
+[x] - delete mathGames array || item;
+[x] - delete score array || score operation;
 
-  -- 1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d
+[] - improve this logic:
+-- 1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d
+-- int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
+-- string[] mathGames = new string[33];
 
-  -- int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
+[] - Learning about return methods;
 
-  -- string[] mathGames = new string[33];
-
-- Learning about return methods;
+[] - why
 
 - Dereference of a possibly null reference
   (local variable) string? readResult
   'readResult' may be null here.
-
 - // if (!String.IsNullOrEmpty(readResult))
+- if is inside this if (readResult != null)?
 
-- if is inside this if (readResult != null)
+[x] - Display calculations by operation (1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d);
+[x] - Delete calculations by operation (1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d);
 
-- ?
+[] - Ask to delete only if array is not null or empty
 
-- Display calculations by operation (1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d);
-- Delete calculations by operation (1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d);
--
-
-- Ask to delete only if array is not null or empty
 - IsNullOrEmpty - equivalent for Array?
 
-- Implement logic for Square Root function (* operator is == in Multiplication method);
+[] Implement logic for Square Root function (\* operator is == in Multiplication method);
+
+[] - Validation for input:
+[] - if (Console.ReadLine() == "y");
+[] - if (Console.ReadLine() == "d");
+[] - if (Console.ReadLine() == "x")
 
 # Learning Topics:
 
