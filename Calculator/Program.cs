@@ -17,7 +17,7 @@ namespace CalculatorProgram
             int answerForSubtraction = 0;
             int answerForMultiplication = 0;
             int answerForDivision = 0;
-            int answerForSquare = 0;
+            // int answerForSquare = 0;
 
             string? readResult;
             string menuSelection = "";
@@ -25,14 +25,9 @@ namespace CalculatorProgram
 
             // 1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d
             int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
-
             string[] mathOperations = new string[] { "Addition", "Subtraction", "Multiplication", "Division", "Square2d" };
-
             string[] mathGames = new string[33];
-
-
             int counter = 0;
-
 
             // handles user interface and error-handling work
             while (menuSelection != "exit")
@@ -175,21 +170,12 @@ namespace CalculatorProgram
                 // handles user interface
                 switch (menuSelection)
                 {
-                    // case "0": // Delete Scores Math Calculations
-                    //     mathCalculations = CalculatorLibrary.Calculator.DeleteScoresMathCalculations(mathCalculations, mathGames, scores, mathOperations);
-
-                    //     Console.WriteLine("\n\rPress the Enter key to continue.");
-                    //     readResult = Console.ReadLine();
-                    //     break;
 
                     case "1": // Addition
                         Console.WriteLine("Addition");
 
                         counter++;
                         mathCalculations++;
-                        // 
-                        // answerForSum++;
-                        // scores[0, 1] = answerForSum;
 
                         answerForSum = CalculatorLibrary.Calculator.MakeSum(counter, firstNumber, secondNumber, mathGames, total, mathGame, answerForSum, scores);
 
@@ -203,9 +189,6 @@ namespace CalculatorProgram
                         counter++;
                         mathCalculations++;
 
-                        // answerForSubtraction++;
-                        // scores[1, 1] = answerForSubtraction;
-
                         answerForSubtraction = CalculatorLibrary.Calculator.MakeSubtraction(counter, firstNumber, secondNumber, mathGames, total, mathGame, answerForSubtraction, scores);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -217,9 +200,6 @@ namespace CalculatorProgram
 
                         counter++;
                         mathCalculations++;
-
-                        // answerForMultiplication++;
-                        // scores[2, 1] = answerForMultiplication;
 
                         answerForMultiplication = CalculatorLibrary.Calculator.MakeMultiplication(counter, firstNumber, secondNumber, mathGames, total, mathGame, answerForMultiplication, scores);
 
@@ -233,9 +213,6 @@ namespace CalculatorProgram
                         counter++;
                         mathCalculations++;
 
-                        // answerForDivision++;
-                        // scores[3, 1] = answerForDivision;
-
                         answerForDivision = CalculatorLibrary.Calculator.MakeDivisionForIntegers(counter, firstNumber, secondNumber, mathGames, total, mathGame, answerForDivision, scores);
 
                         Console.WriteLine();
@@ -243,20 +220,20 @@ namespace CalculatorProgram
                         readResult = Console.ReadLine();
                         break;
 
-                    case "5": // Square Root
-                        Console.WriteLine("Square Root");
-                        counter++;
+                    // case "5": // Square Root
+                    //     Console.WriteLine("Square Root");
+                    //     counter++;
 
-                        mathCalculations++;
-                        answerForSquare++;
-                        scores[4, 1] = answerForSquare;
+                    //     mathCalculations++;
+                    //     answerForSquare++;
+                    //     scores[4, 1] = answerForSquare;
 
-                        CalculatorLibrary.Calculator.MakeSquare(counter, firstNumber, mathGames, total, mathGame);
+                    //     CalculatorLibrary.Calculator.MakeSquare(counter, firstNumber, mathGames, total, mathGame);
 
-                        Console.WriteLine();
-                        Console.WriteLine("\n\rPress the Enter key to continue.");
-                        readResult = Console.ReadLine();
-                        break;
+                    //     Console.WriteLine();
+                    //     Console.WriteLine("\n\rPress the Enter key to continue.");
+                    //     readResult = Console.ReadLine();
+                    //     break;
 
                     case "6": // Even or Odd
                         Console.WriteLine("Even or Odd");
@@ -284,7 +261,6 @@ namespace CalculatorProgram
                         break;
 
                     case "9": // Delete Latest Math Calculations
-                              // TODO: Delete from scoresf
                         mathCalculations = CalculatorLibrary.Calculator.DeleteLatestMathCalculations(mathCalculations, mathGames, scores, answerForSum, answerForSubtraction, answerForMultiplication, answerForDivision, mathOperations);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
