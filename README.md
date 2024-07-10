@@ -22,6 +22,7 @@ Command + P:
 .NET: Generate Assets for Build and Debug
 ```
 
+To handle terminal input while debugging, you can use the integrated terminal:
 In launch.json file, configure console:
 
 "console": "integratedTerminal",
@@ -43,6 +44,8 @@ dotnet --list-sdks
 (Manage multiple projects in VSCode)
 
 ### Creating a .NET class library
+
+class library – assembly that can be used by other assemblies
 
 #### Add a second project: Calculator Library
 
@@ -77,10 +80,28 @@ CalculatorLibrary
 - delete mathGames array || item;
 - delete score array || score operation;
 - improve this logic:
-  1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d
-  int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
+
+  -- 1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d
+
+  -- int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
+
+  -- string[] mathGames = new string[33];
+
 - Learning about return methods;
--
+
+- Dereference of a possibly null reference
+  (local variable) string? readResult
+  'readResult' may be null here.
+
+- // if (!String.IsNullOrEmpty(readResult))
+
+- if is inside this if (readResult != null)
+
+- ?
+
+- Display calculations by operation (1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d);
+- Delete calculations by operation (1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d);
+- 
 
 # Learning Topics:
 
@@ -99,6 +120,20 @@ CalculatorLibrary
   (logic error prevents the .NET runtime from running commands, then the program CRASHES)
 
 - Dependency is an object that another object depends on;
+
+->>>>
+
+- application – assembly with an entry point;
+
+- assembly – one or more files output by the compiler as a result of program compilation;
+
+- module – the contents of an assembly produced by a compiler. Some implementations may have facilities to produce assemblies that contain more than one module. The behavior in such situations is outside the scope of this specification;
+
+- namespace – logical organizational system grouping related program elements;
+
+- program – one or more compilation units that are presented to the compiler and are run or executed by an execution environment
+
+->>>>
 
 <!--
 

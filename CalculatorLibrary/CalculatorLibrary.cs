@@ -3,11 +3,11 @@
     public class Calculator
     {
         // methods to handle calculations work
-        public static void MakeSum(int counter, double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
+        public static void MakeSum(int counter, double firstNumber, double secondNumber, string[] mathGames, double total, string mathGame, int answerForSum, int[,] scores)
         {
 
-            Console.WriteLine(counter);
-            // Console.WriteLine(mathCalculations);
+            // answerForSum++;
+            // scores[0, 1] = answerForSum;
 
             total = firstNumber + secondNumber;
 
@@ -18,10 +18,8 @@
             Console.WriteLine();
         }
 
-        public static void MakeSubtraction(int counter, double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
+        public static void MakeSubtraction(int counter, double firstNumber, double secondNumber, string[] mathGames, double total, string mathGame)
         {
-            Console.WriteLine(counter);
-
             total = firstNumber - secondNumber;
 
             mathGame = string.Format($"{firstNumber} - {secondNumber} = {total}");
@@ -30,11 +28,8 @@
             Console.WriteLine($"{firstNumber} - {secondNumber} = {total}");
             Console.WriteLine();
         }
-        public static void MakeMultiplication(int counter, double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
+        public static void MakeMultiplication(int counter, double firstNumber, double secondNumber, string[] mathGames, double total, string mathGame)
         {
-
-            Console.WriteLine(counter);
-
             total = firstNumber * secondNumber;
 
             mathGame = string.Format($"{firstNumber} * {secondNumber} = {total}");
@@ -44,7 +39,7 @@
             Console.WriteLine();
         }
 
-        public static void MakeDivisionForIntegers(int counter, double firstNumber, double secondNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
+        public static void MakeDivisionForIntegers(int counter, double firstNumber, double secondNumber, string[] mathGames, double total, string mathGame)
         {
 
             total = firstNumber / secondNumber;
@@ -56,7 +51,7 @@
             Console.WriteLine();
         }
 
-        public static void MakeSquare(int counter, double firstNumber, int mathCalculations, string[] mathGames, double total, string mathGame)
+        public static void MakeSquare(int counter, double firstNumber, string[] mathGames, double total, string mathGame)
         {
 
             total = firstNumber * firstNumber;
@@ -92,7 +87,6 @@
             {
                 if (mathGames[i] != null)
                 {
-
                     Console.Write($"\t{mathGames[i]}");
                     Console.WriteLine();
                 }
@@ -101,8 +95,17 @@
         }
 
 
-        public static void DisplayTotalMathCalculations(int mathCalculations, int[,] scores, string[] mathOperations)
+        public static void DisplayTotalMathCalculations(int mathCalculations, int[,] scores, string[] mathOperations, int answerForSum, int answerForSubtraction, int answerForMultiplication, int answerForDivision)
         {
+
+            // scores[0, 1] = answerForSum;
+            // scores[1, 1] = answerForSubtraction;
+            // scores[2, 1] = answerForMultiplication;
+            // scores[2, 1] = answerForMultiplication;
+            // scores[3, 1] = answerForDivision;
+            // scores[4, 1] = answerForSquare;
+
+
             Console.WriteLine($"Total Math Calculations:\t\t{mathCalculations}");
             Console.WriteLine();
 
@@ -113,12 +116,13 @@
                 Console.Write($"\t{scores[i, 1]}\n");
 
             }
+
             // return scores;
         }
 
-        public static int DeleteLatestMathCalculations(int mathCalculations, string[] mathGames, int[,] scores)
+        public static int DeleteLatestMathCalculations(int mathCalculations, string[] mathGames, int[,] scores, int answerForSum, int answerForSubtraction, int answerForMultiplication, int answerForDivision)
         {
-            bool operationToDelete = false;
+            // bool operationToDelete = false;
             // TODO: Ask only if array is not null
             Console.Write($"Do you want to delete some or all calculations? y or n?");
 
@@ -144,38 +148,83 @@
                 {
                     if (mathGames[i] != null)
                     {
+                        string checkOperation = mathGames[i];
                         // Wait for the user to respond before closing.
                         Console.Write($"Press 'x' to delete the {mathGames[i]} calculation, or press any other key and Enter to continue: ");
 
                         if (Console.ReadLine() == "x")
                         {
-                            // "delete" the item 
-                            Console.WriteLine(mathGames[i]);
+                            // Console.WriteLine(checkOperation);
 
-                            mathGames.SetValue(null, i);
-                            mathCalculations--;
-                            operationToDelete = true;
-                            Console.WriteLine(mathGames[i]);
-                            Console.WriteLine(i);
+                            if (checkOperation.Contains("+"))
+                            {
+                                scores.SetValue(scores[0, 1] - 1, 0, 1);
+                                answerForSum--;
+                                scores[0, 1] = answerForSum;
+                                Console.WriteLine(scores[0, 1]);
+                                Console.WriteLine(answerForSum);
+
+                                // "delete" the item 
+                                mathGames.SetValue(null, i);
+                                mathCalculations--;
+                                // operationToDelete = true;
+                            }
+                            else if (checkOperation.Contains("-"))
+                            {
+                                scores.SetValue(scores[1, 1] - 1, 1, 1);
+                                answerForSubtraction--;
+                                scores[1, 1] = answerForSubtraction;
+
+                                // "delete" the item 
+                                mathGames.SetValue(null, i);
+                                mathCalculations--;
+                                // operationToDelete = true;
+                            }
+                            else if (checkOperation.Contains("*"))
+                            {
+                                scores.SetValue(scores[2, 1] - 1, 2, 1);
+                                answerForMultiplication--;
+                                scores[2, 1] = answerForMultiplication;
+
+                                // "delete" the item 
+                                mathGames.SetValue(null, i);
+                                mathCalculations--;
+                                // operationToDelete = true;
+                            }
+                            else if (checkOperation.Contains("/"))
+                            {
+                                scores.SetValue(scores[3, 1] - 1, 3, 1);
+                                answerForDivision--;
+                                scores[3, 1] = answerForDivision;
+
+                                // "delete" the item 
+                                mathGames.SetValue(null, i);
+                                mathCalculations--;
+                                // operationToDelete = true;
+                            }
                         }
-
-
-
                     }
                 }
+                // scores[0, 1] = answerForSum;
+                // scores[1, 1] = answerForSubtraction;
+                // scores[2, 1] = answerForMultiplication;
+                // scores[2, 1] = answerForMultiplication;
+                // scores[3, 1] = answerForDivision;
+                // scores[4, 1] = answerForSquare;
 
-                if (operationToDelete == true)
-                {
-                    for (int j = 0; j < scores.Length / 2; j++)
-                    {
 
-                        // "delete" the item 
-                        // mathCalculations = mathCalculations - scores[j, 1];
-                        // Console.WriteLine();
-                        scores.SetValue(scores[j, 1] - 1, j, 1);
-                        // Console.Write($"\t{scores[i, 1]}\n");
-                    }
-                }
+                // if (operationToDelete == true)
+                // {
+                //     for (int j = 0; j < scores.Length / 2; j++)
+                //     {
+
+                //         // "delete" the element 
+                //         // mathCalculations = mathCalculations - scores[j, 1];
+                //         // Console.WriteLine();
+                //         scores.SetValue(scores[j, 1] - 1, j, 1);
+                //         // Console.Write($"\t{scores[i, 1]}\n");
+                //     }
+                // }
 
             }
             Console.WriteLine("\n"); // Friendly linespacing.
@@ -204,17 +253,25 @@
                     // Wait for the user to respond before closing.
                     Console.Write($"Press 'x' to delete all the {mathOperations[i]} operations, or press any other key and Enter to continue: ");
 
+
                     if (Console.ReadLine() == "x")
                     {
-                        // "delete" the item 
+                        // "delete" the element 
                         mathCalculations = mathCalculations - scores[i, 1];
-                        Console.WriteLine();
-                        Console.Write($"\t{mathOperations[i]}");
+                        // Console.Write($"\t{mathOperations[i]}");
                         scores.SetValue(0, i, 1);
-                        Console.Write($"\t{scores[i, 1]}\n");
+                        // Console.Write($"\t{scores[i, 1]}\n");
+
                     }
                 }
             }
+
+            // scores[0, 1] = answerForSum;
+            // scores[1, 1] = answerForSubtraction;
+            // scores[2, 1] = answerForMultiplication;
+            // scores[2, 1] = answerForMultiplication;
+            // scores[3, 1] = answerForDivision;
+            // scores[4, 1] = answerForSquare;
 
 
 
