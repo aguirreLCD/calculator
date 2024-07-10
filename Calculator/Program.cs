@@ -188,10 +188,10 @@ namespace CalculatorProgram
                         counter++;
                         mathCalculations++;
                         // 
-                        answerForSum++;
-                        scores[0, 1] = answerForSum;
+                        // answerForSum++;
+                        // scores[0, 1] = answerForSum;
 
-                        CalculatorLibrary.Calculator.MakeSum(counter, firstNumber, secondNumber, mathGames, total, mathGame, answerForSum, scores);
+                        answerForSum = CalculatorLibrary.Calculator.MakeSum(counter, firstNumber, secondNumber, mathGames, total, mathGame, answerForSum, scores);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -203,10 +203,10 @@ namespace CalculatorProgram
                         counter++;
                         mathCalculations++;
 
-                        answerForSubtraction++;
-                        scores[1, 1] = answerForSubtraction;
+                        // answerForSubtraction++;
+                        // scores[1, 1] = answerForSubtraction;
 
-                        CalculatorLibrary.Calculator.MakeSubtraction(counter, firstNumber, secondNumber, mathGames, total, mathGame);
+                        answerForSubtraction = CalculatorLibrary.Calculator.MakeSubtraction(counter, firstNumber, secondNumber, mathGames, total, mathGame, answerForSubtraction, scores);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -218,10 +218,10 @@ namespace CalculatorProgram
                         counter++;
                         mathCalculations++;
 
-                        answerForMultiplication++;
-                        scores[2, 1] = answerForMultiplication;
+                        // answerForMultiplication++;
+                        // scores[2, 1] = answerForMultiplication;
 
-                        CalculatorLibrary.Calculator.MakeMultiplication(counter, firstNumber, secondNumber, mathGames, total, mathGame);
+                        answerForMultiplication = CalculatorLibrary.Calculator.MakeMultiplication(counter, firstNumber, secondNumber, mathGames, total, mathGame, answerForMultiplication, scores);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
@@ -233,10 +233,10 @@ namespace CalculatorProgram
                         counter++;
                         mathCalculations++;
 
-                        answerForDivision++;
-                        scores[3, 1] = answerForDivision;
+                        // answerForDivision++;
+                        // scores[3, 1] = answerForDivision;
 
-                        CalculatorLibrary.Calculator.MakeDivisionForIntegers(counter, firstNumber, secondNumber, mathGames, total, mathGame);
+                        answerForDivision = CalculatorLibrary.Calculator.MakeDivisionForIntegers(counter, firstNumber, secondNumber, mathGames, total, mathGame, answerForDivision, scores);
 
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -268,7 +268,7 @@ namespace CalculatorProgram
                         readResult = Console.ReadLine();
                         break;
 
-                    case "7": // Display Total Math Calculations
+                    case "7": // Display Total Math Calculations by Operations
                         CalculatorLibrary.Calculator.DisplayTotalMathCalculations(mathCalculations, scores, mathOperations, answerForSum, answerForSubtraction, answerForMultiplication, answerForDivision);
 
                         Console.WriteLine();
@@ -284,8 +284,8 @@ namespace CalculatorProgram
                         break;
 
                     case "9": // Delete Latest Math Calculations
-                              // TODO: Delete from scores
-                        mathCalculations = CalculatorLibrary.Calculator.DeleteLatestMathCalculations(mathCalculations, mathGames, scores, answerForSum, answerForSubtraction, answerForMultiplication, answerForDivision);
+                              // TODO: Delete from scoresf
+                        mathCalculations = CalculatorLibrary.Calculator.DeleteLatestMathCalculations(mathCalculations, mathGames, scores, answerForSum, answerForSubtraction, answerForMultiplication, answerForDivision, mathOperations);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
