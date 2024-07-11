@@ -17,7 +17,7 @@ namespace CalculatorProgram
             int answerForSubtraction = 0;
             int answerForMultiplication = 0;
             int answerForDivision = 0;
-            // int answerForSquare = 0;
+            int answerForSquare = 0;
 
             string? readResult;
             string menuSelection = "";
@@ -220,20 +220,17 @@ namespace CalculatorProgram
                         readResult = Console.ReadLine();
                         break;
 
-                    // case "5": // Square Root
-                    //     Console.WriteLine("Square Root");
-                    //     counter++;
+                    case "5": // Square Root
+                        Console.WriteLine("Square Root");
+                        counter++;
+                        mathCalculations++;
+                      
+                        answerForSquare = CalculatorLibrary.Calculator.MakeSquare(counter, firstNumber, mathGames, total, mathGame, answerForSquare, scores);
 
-                    //     mathCalculations++;
-                    //     answerForSquare++;
-                    //     scores[4, 1] = answerForSquare;
-
-                    //     CalculatorLibrary.Calculator.MakeSquare(counter, firstNumber, mathGames, total, mathGame);
-
-                    //     Console.WriteLine();
-                    //     Console.WriteLine("\n\rPress the Enter key to continue.");
-                    //     readResult = Console.ReadLine();
-                    //     break;
+                        Console.WriteLine();
+                        Console.WriteLine("\n\rPress the Enter key to continue.");
+                        readResult = Console.ReadLine();
+                        break;
 
                     case "6": // Even or Odd
                         Console.WriteLine("Even or Odd");

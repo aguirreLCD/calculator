@@ -75,26 +75,40 @@
             return answerForDivision;
         }
 
-        // public static void MakeSquare(int counter, double firstNumber, string[] mathGames, double total, string mathGame)
-        // {
+        public static int MakeSquare(int counter, double firstNumber, string[] mathGames, double total, string mathGame, int answerForSquare, int[,] scores)
+        {
 
-        //     total = firstNumber * firstNumber;
+            answerForSquare = scores[4, 1];
 
-        //     mathGame = string.Format($"{firstNumber} * {firstNumber} = {total}");
-        //     mathGames[counter] = mathGame;
+            answerForSquare++;
 
-        //     Console.WriteLine($"{firstNumber} * {firstNumber} = {total}");
-        //     Console.WriteLine();
-        // }
+            scores[4, 1] = answerForSquare;
+
+            /*
+            // What is Square Root in Math? The square root of a number is a number that when multiplied by itself gives the actual number. 
+            // For example, 2 is the square root of 4, and this is expressed as √4 = 2. This means when 2 is multiplied by 2 it results in 4 and this can be verified as 2 × 2 = 4.
+            */
+
+            total = Math.Sqrt(firstNumber);
+
+            mathGame = string.Format($"{total} is the square root of {firstNumber}");
+            mathGames[counter] = mathGame;
+
+            Console.WriteLine($"{total} is the square root of {firstNumber}");
+            Console.WriteLine();
+            return answerForSquare;
+        }
 
         public static void EvenOrOdd(double firstNumber)
         {
             if (firstNumber % 2 == 0)
             {
+                // save on math games
                 Console.WriteLine($"{firstNumber} is an even number");
             }
             else
             {
+                // save on math games
                 Console.WriteLine($"{firstNumber} is an odd number");
             }
         }
@@ -187,6 +201,7 @@
                         if (Console.ReadLine() == "x")
                         {
                             // delete element from mathGames array
+                            // check .Remove
                             mathGames.SetValue(null, i);
                             mathCalculations--;
 
@@ -213,6 +228,8 @@
                                     answerForDivision--;
                                     scores[3, 1] = answerForDivision;
                                 }
+                                // if square
+                                // if even or odd
                             }
                         }
                     }

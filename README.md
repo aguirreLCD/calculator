@@ -76,18 +76,18 @@ CalculatorLibrary
 
 # Working on:
 
-- [] - Delete function:
-- [x] - delete mathGames array || item;
-- [x] - delete score array || score operation;
+- [] Delete function:
+- [x] delete mathGames array || item;
+- [x] delete score array || score operation;
 
-- [] - improve this logic:
-- -- 1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d;
-- -- int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
-- -- string[] mathGames = new string[33];
+- [] improve this logic:
+- 1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d;
+- int[,] scores = new int[,] { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
+- string[] mathGames = new string[33];
 
-- [] - Learning about return methods;
+- [] Learning about return methods;
 
-- [] - why
+- [] check why
 
 - Dereference of a possibly null reference;
   (local variable) string? readResult
@@ -100,15 +100,18 @@ CalculatorLibrary
 - [x] Delete calculations by operation (1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d);
 
 - [] Ask to delete only if array is not null or empty;
-
 - IsNullOrEmpty - equivalent for Array?
 
 - [] Implement logic for Square Root function (\* operator is == in Multiplication method);
 
-- [] - Validation for input:
-- [] - if (Console.ReadLine() == "y");
-- [] - if (Console.ReadLine() == "d");
-- [] - if (Console.ReadLine() == "x")
+- [] Validation for input:
+- [] if (Console.ReadLine() == "y");
+- [] if (Console.ReadLine() == "d");
+- [] if (Console.ReadLine() == "x")
+
+- polish reverse notation;
+
+- Parameter '..' can be removed if it is not part of a shipped public API; its initial value is never used
 
 # Learning Topics:
 
