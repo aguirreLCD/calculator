@@ -49,8 +49,12 @@ namespace CalculatorProgram
                 Console.WriteLine("5. To calculate the Square Root, type: 5");
                 Console.WriteLine("6. To check if one integer is Even or Odd, type: 6");
 
-                Console.WriteLine("7. To display the total Math Calculations by operation, type: 7");
-                Console.WriteLine("8. To display the previous Math Calculations, type: 8");
+                Console.WriteLine("7. To display Total Math Calculations by operation, type: 7");
+                Console.WriteLine("8. To display Previous Math Calculations, type: 8");
+
+                Console.WriteLine("9. To delete previous Math Calculations, type: 9");
+                Console.WriteLine("0. To display calculations by operation, type: 0");
+
 
                 var currentDate = DateTime.Now;
                 Console.WriteLine($"{Environment.NewLine}Hello! on {currentDate:d} at {currentDate:t}");
@@ -170,6 +174,12 @@ namespace CalculatorProgram
                 // handles user interface
                 switch (menuSelection)
                 {
+                    case "0":
+                        CalculatorLibrary.Calculator.DisplayByOperation(mathGames);
+
+                        Console.WriteLine("\n\rPress the Enter key to continue.");
+                        readResult = Console.ReadLine();
+                        break;
 
                     case "1": // Addition
                         Console.WriteLine("Addition");
@@ -215,7 +225,6 @@ namespace CalculatorProgram
 
                         answerForDivision = CalculatorLibrary.Calculator.MakeDivisionForIntegers(counter, firstNumber, secondNumber, mathGames, total, mathGame, answerForDivision, scores);
 
-                        Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
                         break;
@@ -227,7 +236,6 @@ namespace CalculatorProgram
 
                         answerForSquare = CalculatorLibrary.Calculator.MakeSquare(counter, firstNumber, mathGames, total, mathGame, answerForSquare, scores);
 
-                        Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
                         break;
@@ -237,7 +245,6 @@ namespace CalculatorProgram
 
                         CalculatorLibrary.Calculator.EvenOrOdd(firstNumber);
 
-                        Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
                         break;
@@ -245,7 +252,6 @@ namespace CalculatorProgram
                     case "7": // Display Total Math Calculations by Operations
                         CalculatorLibrary.Calculator.DisplayTotalMathCalculations(mathCalculations, scores, mathOperations, answerForSum, answerForSubtraction, answerForMultiplication, answerForDivision, mathGames);
 
-                        Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
                         break;
@@ -263,6 +269,7 @@ namespace CalculatorProgram
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
                         break;
+
                 }
             }
         }

@@ -96,7 +96,7 @@ CalculatorLibrary
 - if is inside this if (readResult != null)?
 
 - [x] Display total calculations by operation (1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d);
-- [] Display each calculations by operation;
+- [x] Display each calculations by operation;
 
 - [x] Delete calculations by operation (1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d);
 

@@ -2,6 +2,7 @@
 {
     public class Calculator
     {
+
         // methods to handle calculations work
         public static int MakeSum(int counter, double firstNumber, double secondNumber, string[] mathGames, double total, string mathGame, int answerForSum, int[,] scores)
         {
@@ -124,6 +125,7 @@
                     Console.WriteLine();
                 }
             }
+
             return mathGames;
         }
 
@@ -139,6 +141,250 @@
                 Console.Write($"\t{scores[i, 1]}\n");
             }
 
+            // TODO: Create a method to display calculations by operation
+            // string[] addition = new string[10];
+            // string[] subtraction = new string[10];
+            // string[] multiplication = new string[10];
+            // string[] division = new string[10];
+            // string[] squareRoot = new string[10];
+
+            // int counterForSum = 0;
+            // int counterForSubtraction = 0;
+            // int counterForMultiplication = 0;
+            // int counterForDivision = 0;
+            // int counterForSquareRoot = 0;
+
+            // foreach (string game in mathGames)
+            // {
+            //     if (game != null)
+            //     {
+            //         string checkOperation = game;
+
+            //         if (checkOperation.Contains("+")) checkOperation = "Addition";
+            //         if (checkOperation.Contains("-")) checkOperation = "Subtraction";
+            //         if (checkOperation.Contains("*")) checkOperation = "Multiplication";
+            //         if (checkOperation.Contains("/")) checkOperation = "Division";
+            //         if (checkOperation.Contains("square root")) checkOperation = "SquareRoot";
+
+            //         switch (checkOperation)
+            //         {
+            //             case "Addition":
+            //                 counterForSum++;
+            //                 addition[counterForSum] = game;
+            //                 break;
+
+            //             case "Subtraction":
+            //                 counterForSubtraction++;
+            //                 subtraction[counterForSubtraction] = game;
+            //                 break;
+
+            //             case "Multiplication":
+            //                 counterForMultiplication++;
+            //                 multiplication[counterForMultiplication] = game;
+            //                 break;
+
+            //             case "Division":
+            //                 counterForDivision++;
+            //                 division[counterForDivision] = game;
+            //                 break;
+
+            //             case "SquareRoot":
+            //                 counterForSquareRoot++;
+            //                 squareRoot[counterForSquareRoot] = game;
+            //                 break;
+            //         }
+            //     }
+            // }
+            // Console.WriteLine();
+
+            // // want to see calculations by operation?
+            // Console.WriteLine(" To display the Addition Calculations , type: A");
+            // Console.WriteLine(" To display the Subtraction Calculations , type: S");
+            // Console.WriteLine(" To display the Multiplication Calculations , type: M");
+            // Console.WriteLine(" To display the Division Calculations , type: D");
+            // Console.WriteLine(" To display the Square Root Calculations , type: R");
+            // Console.WriteLine();
+            // Console.WriteLine("Enter your option (or type Exit to exit the program)");
+            // Console.WriteLine();
+
+            // string? readCalcInput;
+            // readCalcInput = Console.ReadLine();
+            // var acceptableCalculationOption = "A S M D R".Split();
+
+            // if (readCalcInput != null)
+            // {
+            //     // validate for menu options
+            //     while (!acceptableCalculationOption.Contains(readCalcInput))
+            //     {
+            //         Console.WriteLine("Enter your option (or type Exit to exit the program)");
+            //         Console.WriteLine();
+            //         readCalcInput = Console.ReadLine();
+            //     }
+
+            //     switch (readCalcInput)
+            //     {
+            //         case "A":
+            //             Console.WriteLine("Addition");
+            //             for (int i = 0; i < addition.Length; i++)
+            //             {
+            //                 if (addition[i] != null)
+            //                 {
+            //                     Console.Write($"\t{addition[i]}");
+            //                     Console.WriteLine();
+            //                 }
+            //             }
+            //             break;
+
+            //         case "S":
+            //             Console.WriteLine("Subtraction");
+            //             for (int i = 0; i < subtraction.Length; i++)
+            //             {
+            //                 if (subtraction[i] != null)
+            //                 {
+            //                     Console.Write($"\t{subtraction[i]}");
+            //                     Console.WriteLine();
+            //                 }
+            //             }
+            //             break;
+
+            //         case "M":
+            //             Console.WriteLine("Multiplication");
+            //             for (int i = 0; i < multiplication.Length; i++)
+            //             {
+            //                 if (multiplication[i] != null)
+            //                 {
+            //                     Console.Write($"\t{multiplication[i]}");
+            //                     Console.WriteLine();
+            //                 }
+            //             }
+            //             break;
+
+            //         case "D":
+            //             Console.WriteLine("Division");
+            //             for (int i = 0; i < division.Length; i++)
+            //             {
+            //                 if (division[i] != null)
+            //                 {
+            //                     Console.Write($"\t{division[i]}");
+            //                     Console.WriteLine();
+            //                 }
+            //             }
+            //             break;
+
+            //         case "R":
+            //             Console.WriteLine("Square Root");
+            //             for (int i = 0; i < squareRoot.Length; i++)
+            //             {
+            //                 if (squareRoot[i] != null)
+            //                 {
+            //                     Console.Write($"\t{squareRoot[i]}");
+            //                     Console.WriteLine();
+            //                 }
+            //             }
+            //             break;
+            //     }
+            // }
+        }
+
+        public static int DeleteLatestMathCalculations(int mathCalculations, string[] mathGames, int[,] scores, int answerForSum, int answerForSubtraction, int answerForMultiplication, int answerForDivision, int answerForSquare, string[] mathOperations)
+        {
+            // bool operationToDelete = false;
+
+            // TODO: Ask only if array is not null or empty
+            // Console.WriteLine(mathGames?.Any() != null);
+            // Console.WriteLine(!mathGames.Any());
+            // Console.WriteLine(mathGames == null);
+            // Console.WriteLine(mathGames?.Length);
+
+            // IsNullOrEmpty - equivalent for Array? 
+            // if (mathGames == IsNullOrEmpty)
+            // {
+            //     Console.Write("There is no calculations to delete.");
+            // }
+
+            Console.Write($"Do you want to delete some or all calculations? y or n?");
+
+            if (Console.ReadLine() == "y")
+            {
+                Console.Write("Press 'd' to delete all the calculations ");
+                Console.Write("Or press any other key and Enter to delete only specifics calculations: ");
+
+                if (Console.ReadLine() == "d")
+                {
+                    for (int i = 0; i < mathGames?.Length; i++)
+                    {
+                        if (mathGames[i] != null)
+                        {
+                            // "delete" the array
+                            mathGames.SetValue(null, i);
+                            mathCalculations--;
+                        }
+                    }
+
+                    for (int i = 0; i < scores.Length / 2; i++)
+                    {
+                        if (scores[i, 1] != 0)
+                        {
+                            // "delete" the array
+                            scores.SetValue(0, i, 1);
+                        }
+                    }
+                }
+
+                for (int i = 0; i < mathGames?.Length; i++)
+                {
+                    if (mathGames[i] != null)
+                    {
+                        string checkOperation = mathGames[i];
+
+                        Console.Write($"Press 'x' to delete the {mathGames[i]} calculation, or press any other key and Enter to continue: ");
+
+                        if (Console.ReadLine() == "x")
+                        {
+                            // delete element from mathGames array
+                            // check .Remove
+                            mathGames.SetValue(null, i);
+                            mathCalculations--;
+
+                            if (checkOperation.Contains("+"))
+                            {
+                                //delete element from scores array
+                                answerForSum--;
+                                scores[0, 1] = answerForSum;
+                            }
+                            else
+                            {
+                                if (checkOperation.Contains("-"))
+                                {
+                                    answerForSubtraction--;
+                                    scores[1, 1] = answerForSubtraction;
+                                }
+                                if (checkOperation.Contains("*"))
+                                {
+                                    answerForMultiplication--;
+                                    scores[2, 1] = answerForMultiplication;
+                                }
+                                if (checkOperation.Contains("/"))
+                                {
+                                    answerForDivision--;
+                                    scores[3, 1] = answerForDivision;
+                                }
+                                if (checkOperation.Contains("square root"))
+                                {
+                                    answerForSquare--;
+                                    scores[4, 1] = answerForSquare;
+                                }
+                                // if even or odd
+                            }
+                        }
+                    }
+                }
+            }
+            return mathCalculations;
+        }
+
+        public static void DisplayByOperation(string[] mathGames)
+        {
             string[] addition = new string[10];
             string[] subtraction = new string[10];
             string[] multiplication = new string[10];
@@ -150,7 +396,6 @@
             int counterForMultiplication = 0;
             int counterForDivision = 0;
             int counterForSquareRoot = 0;
-
 
             foreach (string game in mathGames)
             {
@@ -281,104 +526,8 @@
                         }
                         break;
                 }
-
             }
         }
-        public static int DeleteLatestMathCalculations(int mathCalculations, string[] mathGames, int[,] scores, int answerForSum, int answerForSubtraction, int answerForMultiplication, int answerForDivision, int answerForSquare, string[] mathOperations)
-        {
-            // bool operationToDelete = false;
 
-            // TODO: Ask only if array is not null or empty
-            // Console.WriteLine(mathGames?.Any() != null);
-            // Console.WriteLine(!mathGames.Any());
-            // Console.WriteLine(mathGames == null);
-            // Console.WriteLine(mathGames?.Length);
-
-            // IsNullOrEmpty - equivalent for Array? 
-            // if (mathGames == IsNullOrEmpty)
-            // {
-            //     Console.Write("There is no calculations to delete.");
-            // }
-
-            Console.Write($"Do you want to delete some or all calculations? y or n?");
-
-            if (Console.ReadLine() == "y")
-            {
-                Console.Write("Press 'd' to delete all the calculations ");
-                Console.Write("Or press any other key and Enter to delete only specifics calculations: ");
-
-                if (Console.ReadLine() == "d")
-                {
-                    for (int i = 0; i < mathGames?.Length; i++)
-                    {
-                        if (mathGames[i] != null)
-                        {
-                            // "delete" the array
-                            mathGames.SetValue(null, i);
-                            mathCalculations--;
-                        }
-                    }
-
-                    for (int i = 0; i < scores.Length / 2; i++)
-                    {
-                        if (scores[i, 1] != 0)
-                        {
-                            // "delete" the array
-                            scores.SetValue(0, i, 1);
-                        }
-                    }
-                }
-
-                for (int i = 0; i < mathGames?.Length; i++)
-                {
-                    if (mathGames[i] != null)
-                    {
-                        string checkOperation = mathGames[i];
-
-                        Console.Write($"Press 'x' to delete the {mathGames[i]} calculation, or press any other key and Enter to continue: ");
-
-                        if (Console.ReadLine() == "x")
-                        {
-                            // delete element from mathGames array
-                            // check .Remove
-                            mathGames.SetValue(null, i);
-                            mathCalculations--;
-
-                            if (checkOperation.Contains("+"))
-                            {
-                                //delete element from scores array
-                                answerForSum--;
-                                scores[0, 1] = answerForSum;
-                            }
-                            else
-                            {
-                                if (checkOperation.Contains("-"))
-                                {
-                                    answerForSubtraction--;
-                                    scores[1, 1] = answerForSubtraction;
-                                }
-                                if (checkOperation.Contains("*"))
-                                {
-                                    answerForMultiplication--;
-                                    scores[2, 1] = answerForMultiplication;
-                                }
-                                if (checkOperation.Contains("/"))
-                                {
-                                    answerForDivision--;
-                                    scores[3, 1] = answerForDivision;
-                                }
-                                if (checkOperation.Contains("square root"))
-                                {
-                                    answerForSquare--;
-                                    scores[4, 1] = answerForSquare;
-                                }
-                                // if even or odd
-                            }
-                        }
-                    }
-                }
-            }
-            return mathCalculations;
-        }
     }
 }
