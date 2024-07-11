@@ -18,7 +18,6 @@
             mathGames[counter] = mathGame;
 
             Console.WriteLine($"{firstNumber} + {secondNumber} = {total}");
-            Console.WriteLine();
             return answerForSum;
         }
 
@@ -36,7 +35,6 @@
             mathGames[counter] = mathGame;
 
             Console.WriteLine($"{firstNumber} - {secondNumber} = {total}");
-            Console.WriteLine();
             return answerForSubtraction;
         }
         public static int MakeMultiplication(int counter, double firstNumber, double secondNumber, string[] mathGames, double total, string mathGame, int answerForMultiplication, int[,] scores)
@@ -53,7 +51,6 @@
             mathGames[counter] = mathGame;
 
             Console.WriteLine($"{firstNumber} * {secondNumber} = {total}");
-            Console.WriteLine();
             return answerForMultiplication;
         }
 
@@ -71,12 +68,16 @@
             mathGames[counter] = mathGame;
 
             Console.WriteLine($"{firstNumber} / {secondNumber} = {total}");
-            Console.WriteLine();
             return answerForDivision;
         }
 
         public static int MakeSquare(int counter, double firstNumber, string[] mathGames, double total, string mathGame, int answerForSquare, int[,] scores)
         {
+            /*
+           What is Square Root in Math? The square root of a number is a number that when multiplied by itself gives the actual number. 
+           For example, 2 is the square root of 4, and this is expressed as √4 = 2. 
+           This means when 2 is multiplied by 2 it results in 4 and this can be verified as 2 × 2 = 4.
+           */
 
             answerForSquare = scores[4, 1];
 
@@ -84,18 +85,12 @@
 
             scores[4, 1] = answerForSquare;
 
-            /*
-            // What is Square Root in Math? The square root of a number is a number that when multiplied by itself gives the actual number. 
-            // For example, 2 is the square root of 4, and this is expressed as √4 = 2. This means when 2 is multiplied by 2 it results in 4 and this can be verified as 2 × 2 = 4.
-            */
-
             total = Math.Sqrt(firstNumber);
 
             mathGame = string.Format($"{total} is the square root of {firstNumber}");
             mathGames[counter] = mathGame;
 
             Console.WriteLine($"{total} is the square root of {firstNumber}");
-            Console.WriteLine();
             return answerForSquare;
         }
 
@@ -132,7 +127,7 @@
             return mathGames;
         }
 
-        public static void DisplayTotalMathCalculations(int mathCalculations, int[,] scores, string[] mathOperations, int answerForSum, int answerForSubtraction, int answerForMultiplication, int answerForDivision)
+        public static void DisplayTotalMathCalculations(int mathCalculations, int[,] scores, string[] mathOperations, int answerForSum, int answerForSubtraction, int answerForMultiplication, int answerForDivision, string[] mathGames)
         {
             Console.WriteLine($"Total Math Calculations:\t\t{mathCalculations}");
             Console.WriteLine();
@@ -143,9 +138,153 @@
                 Console.Write($"\t{mathOperations[i]}");
                 Console.Write($"\t{scores[i, 1]}\n");
             }
-        }
 
-        public static int DeleteLatestMathCalculations(int mathCalculations, string[] mathGames, int[,] scores, int answerForSum, int answerForSubtraction, int answerForMultiplication, int answerForDivision, string[] mathOperations)
+            string[] addition = new string[10];
+            string[] subtraction = new string[10];
+            string[] multiplication = new string[10];
+            string[] division = new string[10];
+            string[] squareRoot = new string[10];
+
+            int counterForSum = 0;
+            int counterForSubtraction = 0;
+            int counterForMultiplication = 0;
+            int counterForDivision = 0;
+            int counterForSquareRoot = 0;
+
+
+            foreach (string game in mathGames)
+            {
+                if (game != null)
+                {
+                    string checkOperation = game;
+
+                    if (checkOperation.Contains("+")) checkOperation = "Addition";
+                    if (checkOperation.Contains("-")) checkOperation = "Subtraction";
+                    if (checkOperation.Contains("*")) checkOperation = "Multiplication";
+                    if (checkOperation.Contains("/")) checkOperation = "Division";
+                    if (checkOperation.Contains("square root")) checkOperation = "SquareRoot";
+
+                    switch (checkOperation)
+                    {
+                        case "Addition":
+                            counterForSum++;
+                            addition[counterForSum] = game;
+                            break;
+
+                        case "Subtraction":
+                            counterForSubtraction++;
+                            subtraction[counterForSubtraction] = game;
+                            break;
+
+                        case "Multiplication":
+                            counterForMultiplication++;
+                            multiplication[counterForMultiplication] = game;
+                            break;
+
+                        case "Division":
+                            counterForDivision++;
+                            division[counterForDivision] = game;
+                            break;
+
+                        case "SquareRoot":
+                            counterForSquareRoot++;
+                            squareRoot[counterForSquareRoot] = game;
+                            break;
+                    }
+                }
+            }
+            Console.WriteLine();
+
+            // want to see calculations by operation?
+            Console.WriteLine(" To display the Addition Calculations , type: A");
+            Console.WriteLine(" To display the Subtraction Calculations , type: S");
+            Console.WriteLine(" To display the Multiplication Calculations , type: M");
+            Console.WriteLine(" To display the Division Calculations , type: D");
+            Console.WriteLine(" To display the Square Root Calculations , type: R");
+            Console.WriteLine();
+            Console.WriteLine("Enter your option (or type Exit to exit the program)");
+            Console.WriteLine();
+
+            string? readCalcInput;
+            readCalcInput = Console.ReadLine();
+            var acceptableCalculationOption = "A S M D R".Split();
+
+            if (readCalcInput != null)
+            {
+                // validate for menu options
+                while (!acceptableCalculationOption.Contains(readCalcInput))
+                {
+                    Console.WriteLine("Enter your option (or type Exit to exit the program)");
+                    Console.WriteLine();
+                    readCalcInput = Console.ReadLine();
+                }
+
+                switch (readCalcInput)
+                {
+                    case "A":
+                        Console.WriteLine("Addition");
+                        for (int i = 0; i < addition.Length; i++)
+                        {
+                            if (addition[i] != null)
+                            {
+                                Console.Write($"\t{addition[i]}");
+                                Console.WriteLine();
+                            }
+                        }
+                        break;
+
+                    case "S":
+                        Console.WriteLine("Subtraction");
+                        for (int i = 0; i < subtraction.Length; i++)
+                        {
+                            if (subtraction[i] != null)
+                            {
+                                Console.Write($"\t{subtraction[i]}");
+                                Console.WriteLine();
+                            }
+                        }
+                        break;
+
+                    case "M":
+                        Console.WriteLine("Multiplication");
+                        for (int i = 0; i < multiplication.Length; i++)
+                        {
+                            if (multiplication[i] != null)
+                            {
+                                Console.Write($"\t{multiplication[i]}");
+                                Console.WriteLine();
+                            }
+                        }
+                        break;
+
+                    case "D":
+                        Console.WriteLine("Division");
+                        for (int i = 0; i < division.Length; i++)
+                        {
+                            if (division[i] != null)
+                            {
+                                Console.Write($"\t{division[i]}");
+                                Console.WriteLine();
+                            }
+                        }
+                        break;
+
+                    case "R":
+                        Console.WriteLine("Square Root");
+                        for (int i = 0; i < squareRoot.Length; i++)
+                        {
+                            if (squareRoot[i] != null)
+                            {
+                                Console.Write($"\t{squareRoot[i]}");
+                                Console.WriteLine();
+                            }
+                        }
+                        break;
+                }
+
+            }
+        }
+        public static int DeleteLatestMathCalculations(int mathCalculations, string[] mathGames, int[,] scores, int answerForSum, int answerForSubtraction, int answerForMultiplication, int answerForDivision, int answerForSquare, string[] mathOperations)
         {
             // bool operationToDelete = false;
 
@@ -228,7 +367,11 @@
                                     answerForDivision--;
                                     scores[3, 1] = answerForDivision;
                                 }
-                                // if square
+                                if (checkOperation.Contains("square root"))
+                                {
+                                    answerForSquare--;
+                                    scores[4, 1] = answerForSquare;
+                                }
                                 // if even or odd
                             }
                         }

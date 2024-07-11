@@ -95,14 +95,15 @@ CalculatorLibrary
 - if (!String.IsNullOrEmpty(readResult))
 - if is inside this if (readResult != null)?
 
-- [x] Display calculations by operation (1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d);
+- [x] Display total calculations by operation (1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d);
+- [] Display each calculations by operation;
 
 - [x] Delete calculations by operation (1 = Addition, 2 = Subtraction, 3 = Multiplication, 4 = Division, 5 = Square2d);
 
 - [] Ask to delete only if array is not null or empty;
 - IsNullOrEmpty - equivalent for Array?
 
-- [] Implement logic for Square Root function (\* operator is == in Multiplication method);
+- [x] Implement / correct / fix logic for Square Root function;
 
 - [] Validation for input:
 - [] if (Console.ReadLine() == "y");

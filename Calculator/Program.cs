@@ -224,7 +224,7 @@ namespace CalculatorProgram
                         Console.WriteLine("Square Root");
                         counter++;
                         mathCalculations++;
-                      
+
                         answerForSquare = CalculatorLibrary.Calculator.MakeSquare(counter, firstNumber, mathGames, total, mathGame, answerForSquare, scores);
 
                         Console.WriteLine();
@@ -243,7 +243,7 @@ namespace CalculatorProgram
                         break;
 
                     case "7": // Display Total Math Calculations by Operations
-                        CalculatorLibrary.Calculator.DisplayTotalMathCalculations(mathCalculations, scores, mathOperations, answerForSum, answerForSubtraction, answerForMultiplication, answerForDivision);
+                        CalculatorLibrary.Calculator.DisplayTotalMathCalculations(mathCalculations, scores, mathOperations, answerForSum, answerForSubtraction, answerForMultiplication, answerForDivision, mathGames);
 
                         Console.WriteLine();
                         Console.WriteLine("\n\rPress the Enter key to continue.");
@@ -258,7 +258,7 @@ namespace CalculatorProgram
                         break;
 
                     case "9": // Delete Latest Math Calculations
-                        mathCalculations = CalculatorLibrary.Calculator.DeleteLatestMathCalculations(mathCalculations, mathGames, scores, answerForSum, answerForSubtraction, answerForMultiplication, answerForDivision, mathOperations);
+                        mathCalculations = CalculatorLibrary.Calculator.DeleteLatestMathCalculations(mathCalculations, mathGames, scores, answerForSum, answerForSubtraction, answerForMultiplication, answerForDivision, answerForSquare, mathOperations);
 
                         Console.WriteLine("\n\rPress the Enter key to continue.");
                         readResult = Console.ReadLine();
