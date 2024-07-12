@@ -148,6 +148,12 @@ CalculatorLibrary
 
 <!--
 
+https://dotnet.microsoft.com/en-us/learn/dotnet/architecture-guides
+
+https://dotnet.microsoft.com/en-us/learn/videos
+
+
+
 set up a .NET project to work with dependencies
 
 - dotnet list package
